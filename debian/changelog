@@ -1,3 +1,9 @@
+libfsoframework (0+git20090530-2) UNRELEASED; urgency=low
+
+  * fixed build dependencies
+
+ -- Heiko Stuebner <heiko@sntech.de>  Sat, 30 May 2009 22:10:12 +0200
+
 libfsoframework (0+git20090530-1) UNRELEASED; urgency=low
 
   * Initial release
