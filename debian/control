@@ -28,7 +28,7 @@ Description: freesmartphone.org framework library
 
 Package: libfsoframework-dbg
 Architecture: any
-Section: libdevel
+Section: debug
 Depends: ${misc:Depends}, libfsoframework0 (= ${binary:Version})
 Priority: extra
 Description: debugging symbols for use with libfsoframework
