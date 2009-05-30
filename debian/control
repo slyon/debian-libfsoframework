@@ -1,0 +1,41 @@
+Source: libfsoframework
+Priority: extra
+Maintainer: Heiko Stuebner <heiko@sntech.de>
+Build-Depends: debhelper (>= 7), cdbs, pkg-config, valac (>= 0.7.3), libvala-dev
+Standards-Version: 3.8.1
+Section: libs
+
+Package: libfsoframework-dev
+Section: libdevel
+Architecture: any
+Depends: libfsoframework0 (= ${binary:Version}), ${misc:Depends}, pkg-config
+Description: Development files for libfsoframework
+ This library contains utility functions for
+ freesmartphone.org API implementors.
+ .
+ Development files.
+
+Package: libfsoframework0
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: freesmartphone.org framework library
+ This library contains utility functions for
+ freesmartphone.org API implementors.
+ .
+ This package is part of the freesmartphone.org software stack
+ and is targeted for smartphones.
+
+Package: libfsoframework-dbg
+Architecture: any
+Section: libdevel
+Depends: ${misc:Depends}, libfsoframework0 (= ${binary:Version})
+Priority: extra
+Description: debugging symbols for use with libfsoframework
+ This library contains utility functions for
+ freesmartphone.org API implementors.
+ .
+ This package contains unstripped shared libraries. It is provided primarily
+ to provide a backtrace with names in a debugger, this makes it somewhat easier
+ to interpret core dumps. The libraries are installed in /usr/lib/debug and
+ are automatically used by gdb.
