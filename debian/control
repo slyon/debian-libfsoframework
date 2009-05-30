@@ -1,7 +1,7 @@
 Source: libfsoframework
 Priority: extra
 Maintainer: Heiko Stuebner <heiko@sntech.de>
-Build-Depends: debhelper (>= 7), cdbs, pkg-config, valac (>= 0.7.3), libvala-dev
+Build-Depends: debhelper (>= 7), cdbs, pkg-config, valac (>= 0.7.3), libvala-dev, libglib2.0-dev, libdbus-1-dev, libdbus-glib-1-dev
 Standards-Version: 3.8.1
 Section: libs
 
