@@ -21,18 +21,90 @@
 namespace Linux26 {
 
     /*
-     * Event Fd
+     * EventFd
      */
     [CCode (cprefix = "EFD_", cheader_filename = "sys/eventfd.h")]
-    public enum EventFlags {
+    public enum EventFdFlags {
         CLOEXEC,
         NONBLOCK
     }
 
     [CCode (cheader_filename = "sys/eventfd.h")]
-    public int eventfd (uint count = 0, EventFlags flags = 0);
+    public int eventfd (uint count = 0, EventFdFlags flags = 0);
     public int eventfd_read (int fd, out uint64 value);
     public int eventfd_write (int fd, uint64 value);
+
+    /*
+     * Inotify
+     */
+    [CCode (cname = "struct inotify_event", cheader_filename = "sys/inotify.h")]
+    public struct InotifyEvent {
+        public int wd;
+        public uint32 mask;
+        public uint32 cookie;
+        public uint32 len;
+        public string name;
+    }
+
+    [CCode (cprefix = "IN_", cheader_filename = "sys/inotify.h")]
+    public enum InotifyFlags {
+        CLOEXEC,
+        NONBLOCK
+    }
+
+    [CCode (cprefix = "IN_", cheader_filename = "sys/inotify.h")]
+    public enum InotifyMaskFlags {
+        ACCESS,
+        ATTRIB,
+        CLOSE_WRITE,
+        CLOSE_NOWRITE,
+        CREATE,
+        DELETE,
+        DELETE_SELF,
+        MODIFY,
+        MOVE_SELF,
+        MOVED_FROM,
+        MOVED_TO,
+        OPEN,
+        DONT_FOLLOW,
+        MASK_ADD,
+        ONESHOT,
+        ONLYDIR,
+        IGNORED,
+        ISDIR,
+        Q_OVERFLOW,
+        UNMOUNT
+    }
+
+    [CCode (cname = "inotify_init1", cheader_filename = "sys/inotify.h")]
+    public int inotify_init (InotifyFlags flags = 0);
+    public int inotify_add_watch (int fd, string pathname, InotifyMaskFlags mask);
+    public int inotify_rm_watch (int fd, int wd);
+
+    /*
+     * SignalFd
+     */
+    [CCode (cprefix = "SFD_", cheader_filename = "sys/signalfd.h")]
+    public enum SignalFdFlags {
+        CLOEXEC,
+        NONBLOCK
+    }
+
+    [CCode (cheader_filename = "sys/signalfd.h")]
+    public int signalfd (int fd, Posix.sigset_t mask, SignalFdFlags flags = 0);
+
+    /*
+     * Misc
+     */
+    [CCode (cprefix = "CLONE_", cheader_filename = "sched.h")]
+    public enum CloneFlags {
+        FILES,
+        FS,
+        NEWNS
+    }
+
+    [CCode (cheader_filename = "sched.h")]
+    public int unshare (CloneFlags flags);
 
     /*
      * Input subsystem
@@ -46,8 +118,7 @@ namespace Linux26 {
 
         [CCode (cname = "struct input_event", cheader_filename = "linux/input.h")]
         public struct Event {
-            // FIXME: There should be a posix.TimeVal as well
-            public GLib.TimeVal time;
+            public Posix.timeval time;
             public uint16 type;
             public uint16 code;
             public int32 value;
