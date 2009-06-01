@@ -8,7 +8,7 @@ Section: libs
 Package: libfsoframework-dev
 Section: libdevel
 Architecture: any
-Depends: libfsoframework0 (= ${binary:Version}), ${misc:Depends}, pkg-config
+Depends: libfsoframework0 (= ${binary:Version}), ${misc:Depends}, pkg-config, libdbus-1-dev, libdbus-glib-1-dev
 Description: Development files for libfsoframework
  This library contains utility functions for
  freesmartphone.org API implementors.
