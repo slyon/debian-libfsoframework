@@ -1,3 +1,10 @@
+libfsoframework (0+git20090531-1) UNRELEASED; urgency=low
+
+  * new upstream snapshot
+  * fixed depends of libfsoframework-dev
+
+ -- Heiko Stuebner <heiko@sntech.de>  Mon, 01 Jun 2009 15:10:12 +0200
+
 libfsoframework (0+git20090530-2) UNRELEASED; urgency=low
 
   * fixed build dependencies
