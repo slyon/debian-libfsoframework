@@ -27,17 +27,14 @@
 /* Define to 1 if you have the <string.h> header file. */
 #undef HAVE_STRING_H
 
+/* Have subsystem and plugin support built in */
+#undef HAVE_SUBSYSTEM
+
 /* Define to 1 if you have the <sys/stat.h> header file. */
 #undef HAVE_SYS_STAT_H
 
 /* Define to 1 if you have the <sys/types.h> header file. */
 #undef HAVE_SYS_TYPES_H
-
-/* Have transport support built in */
-#undef HAVE_TRANSPORT
-
-/* Have transport libgsm0710mux support built in */
-#undef HAVE_TRANSPORT_LIBGSM0710MUX
 
 /* Define to 1 if you have the <unistd.h> header file. */
 #undef HAVE_UNISTD_H

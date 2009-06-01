@@ -920,8 +920,6 @@ with_tags
 enable_keyfile
 enable_logging
 enable_subsystem
-enable_transport
-enable_transport_libgsm0710mux
 '
       ac_precious_vars='build_alias
 host_alias
@@ -1585,9 +1583,6 @@ Optional Features:
   --disable-keyfile       build keyfile suppport (default=yes)
   --disable-logging       build logging suppport (default=yes)
   --disable-subsystem     build plugin and subsystem suppport (default=yes)
-  --disable-transport     build transport suppport (default=yes)
-  --disable-transport-libgsm0710mux
-                          libgsm0710mux transport suppport (default=yes)
 
 Optional Packages:
   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
@@ -4577,7 +4572,7 @@ ia64-*-hpux*)
   ;;
 *-*-irix6*)
   # Find out which ABI we are using.
-  echo '#line 4580 "configure"' > conftest.$ac_ext
+  echo '#line 4575 "configure"' > conftest.$ac_ext
   if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -7662,11 +7657,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:7665: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:7660: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:7669: \$? = $ac_status" >&5
+   echo "$as_me:7664: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -7952,11 +7947,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:7955: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:7950: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:7959: \$? = $ac_status" >&5
+   echo "$as_me:7954: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -8056,11 +8051,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:8059: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:8054: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:8063: \$? = $ac_status" >&5
+   echo "$as_me:8058: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -10469,7 +10464,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 10472 "configure"
+#line 10467 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -10569,7 +10564,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 10572 "configure"
+#line 10567 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -12978,11 +12973,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:12981: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:12976: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:12985: \$? = $ac_status" >&5
+   echo "$as_me:12980: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -13082,11 +13077,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:13085: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:13080: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:13089: \$? = $ac_status" >&5
+   echo "$as_me:13084: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -14680,11 +14675,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:14683: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:14678: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:14687: \$? = $ac_status" >&5
+   echo "$as_me:14682: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -14784,11 +14779,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:14787: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:14782: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:14791: \$? = $ac_status" >&5
+   echo "$as_me:14786: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -17012,11 +17007,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:17015: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:17010: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:17019: \$? = $ac_status" >&5
+   echo "$as_me:17014: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -17302,11 +17297,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:17305: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:17300: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:17309: \$? = $ac_status" >&5
+   echo "$as_me:17304: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -17406,11 +17401,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:17409: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:17404: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:17413: \$? = $ac_status" >&5
+   echo "$as_me:17408: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -20656,13 +20651,156 @@ fi
 
 
 #
+# eventfd
+#
+if test "${ac_cv_header_sys_eventfd_h+set}" = set; then
+  { $as_echo "$as_me:$LINENO: checking for sys/eventfd.h" >&5
+$as_echo_n "checking for sys/eventfd.h... " >&6; }
+if test "${ac_cv_header_sys_eventfd_h+set}" = set; then
+  $as_echo_n "(cached) " >&6
+fi
+{ $as_echo "$as_me:$LINENO: result: $ac_cv_header_sys_eventfd_h" >&5
+$as_echo "$ac_cv_header_sys_eventfd_h" >&6; }
+else
+  # Is the header compilable?
+{ $as_echo "$as_me:$LINENO: checking sys/eventfd.h usability" >&5
+$as_echo_n "checking sys/eventfd.h usability... " >&6; }
+cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+$ac_includes_default
+#include <sys/eventfd.h>
+_ACEOF
+rm -f conftest.$ac_objext
+if { (ac_try="$ac_compile"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval ac_try_echo="\"\$as_me:$LINENO: $ac_try_echo\""
+$as_echo "$ac_try_echo") >&5
+  (eval "$ac_compile") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_c_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest.$ac_objext; then
+  ac_header_compiler=yes
+else
+  $as_echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	ac_header_compiler=no
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+{ $as_echo "$as_me:$LINENO: result: $ac_header_compiler" >&5
+$as_echo "$ac_header_compiler" >&6; }
+
+# Is the header present?
+{ $as_echo "$as_me:$LINENO: checking sys/eventfd.h presence" >&5
+$as_echo_n "checking sys/eventfd.h presence... " >&6; }
+cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+#include <sys/eventfd.h>
+_ACEOF
+if { (ac_try="$ac_cpp conftest.$ac_ext"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval ac_try_echo="\"\$as_me:$LINENO: $ac_try_echo\""
+$as_echo "$ac_try_echo") >&5
+  (eval "$ac_cpp conftest.$ac_ext") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } >/dev/null && {
+	 test -z "$ac_c_preproc_warn_flag$ac_c_werror_flag" ||
+	 test ! -s conftest.err
+       }; then
+  ac_header_preproc=yes
+else
+  $as_echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+  ac_header_preproc=no
+fi
+
+rm -f conftest.err conftest.$ac_ext
+{ $as_echo "$as_me:$LINENO: result: $ac_header_preproc" >&5
+$as_echo "$ac_header_preproc" >&6; }
+
+# So?  What about this header?
+case $ac_header_compiler:$ac_header_preproc:$ac_c_preproc_warn_flag in
+  yes:no: )
+    { $as_echo "$as_me:$LINENO: WARNING: sys/eventfd.h: accepted by the compiler, rejected by the preprocessor!" >&5
+$as_echo "$as_me: WARNING: sys/eventfd.h: accepted by the compiler, rejected by the preprocessor!" >&2;}
+    { $as_echo "$as_me:$LINENO: WARNING: sys/eventfd.h: proceeding with the compiler's result" >&5
+$as_echo "$as_me: WARNING: sys/eventfd.h: proceeding with the compiler's result" >&2;}
+    ac_header_preproc=yes
+    ;;
+  no:yes:* )
+    { $as_echo "$as_me:$LINENO: WARNING: sys/eventfd.h: present but cannot be compiled" >&5
+$as_echo "$as_me: WARNING: sys/eventfd.h: present but cannot be compiled" >&2;}
+    { $as_echo "$as_me:$LINENO: WARNING: sys/eventfd.h:     check for missing prerequisite headers?" >&5
+$as_echo "$as_me: WARNING: sys/eventfd.h:     check for missing prerequisite headers?" >&2;}
+    { $as_echo "$as_me:$LINENO: WARNING: sys/eventfd.h: see the Autoconf documentation" >&5
+$as_echo "$as_me: WARNING: sys/eventfd.h: see the Autoconf documentation" >&2;}
+    { $as_echo "$as_me:$LINENO: WARNING: sys/eventfd.h:     section \"Present But Cannot Be Compiled\"" >&5
+$as_echo "$as_me: WARNING: sys/eventfd.h:     section \"Present But Cannot Be Compiled\"" >&2;}
+    { $as_echo "$as_me:$LINENO: WARNING: sys/eventfd.h: proceeding with the preprocessor's result" >&5
+$as_echo "$as_me: WARNING: sys/eventfd.h: proceeding with the preprocessor's result" >&2;}
+    { $as_echo "$as_me:$LINENO: WARNING: sys/eventfd.h: in the future, the compiler will take precedence" >&5
+$as_echo "$as_me: WARNING: sys/eventfd.h: in the future, the compiler will take precedence" >&2;}
+    ( cat <<\_ASBOX
+## ------------------------------------------------- ##
+## Report this to smartphones-userland@linuxtogo.org ##
+## ------------------------------------------------- ##
+_ASBOX
+     ) | sed "s/^/$as_me: WARNING:     /" >&2
+    ;;
+esac
+{ $as_echo "$as_me:$LINENO: checking for sys/eventfd.h" >&5
+$as_echo_n "checking for sys/eventfd.h... " >&6; }
+if test "${ac_cv_header_sys_eventfd_h+set}" = set; then
+  $as_echo_n "(cached) " >&6
+else
+  ac_cv_header_sys_eventfd_h=$ac_header_preproc
+fi
+{ $as_echo "$as_me:$LINENO: result: $ac_cv_header_sys_eventfd_h" >&5
+$as_echo "$ac_cv_header_sys_eventfd_h" >&6; }
+
+fi
+if test "x$ac_cv_header_sys_eventfd_h" = x""yes; then
+  :
+else
+  { { $as_echo "$as_me:$LINENO: error: Couldn't find sys/eventfd.h... your glib is too old :( " >&5
+$as_echo "$as_me: error: Couldn't find sys/eventfd.h... your glib is too old :( " >&2;}
+   { (exit 1); exit 1; }; }
+fi
+
+
+
+#
 # default features
 #
 want_keyfile=yes
 want_logging=yes
 want_subsystem=yes
-want_transport=yes
-want_transportlibgsm0710mux=yes
 
 #
 # enable/disable features
@@ -20700,28 +20838,6 @@ $as_echo_n "checking whether to build plugin and subsystem support... " >&6; }
 { $as_echo "$as_me:$LINENO: result: ${want_subsystem}" >&5
 $as_echo "${want_subsystem}" >&6; }
 
-# Check whether --enable-transport was given.
-if test "${enable_transport+set}" = set; then
-  enableval=$enable_transport; want_transport=$enableval
-
-fi
-
-{ $as_echo "$as_me:$LINENO: checking whether to build transport support" >&5
-$as_echo_n "checking whether to build transport support... " >&6; }
-{ $as_echo "$as_me:$LINENO: result: ${want_transport}" >&5
-$as_echo "${want_transport}" >&6; }
-
-# Check whether --enable-transport_libgsm0710mux was given.
-if test "${enable_transport_libgsm0710mux+set}" = set; then
-  enableval=$enable_transport_libgsm0710mux; want_transportlibgsm0710mux=$enableval
-
-fi
-
-{ $as_echo "$as_me:$LINENO: checking whether to build transport-libgsm0710mux support" >&5
-$as_echo_n "checking whether to build transport-libgsm0710mux support... " >&6; }
-{ $as_echo "$as_me:$LINENO: result: ${want_transportlibgsm0710mux}" >&5
-$as_echo "${want_transportlibgsm0710mux}" >&6; }
-
 #
 # compute conditionals
 #
@@ -20743,22 +20859,13 @@ _ACEOF
 
 fi
 
-if test "x${want_transport}" = "xyes" ; then
-   have_transport="yes"
+if test "x${want_subsystem}" = "xyes" ; then
+   have_subsystem="yes"
 
 cat >>confdefs.h <<\_ACEOF
-#define HAVE_TRANSPORT 1
+#define HAVE_SUBSYSTEM 1
 _ACEOF
 
-
-   if test "x${want_transportlibgsm0710mux}" = "xyes" ; then
-   have_transportlibgsm0710mux="yes"
-
-cat >>confdefs.h <<\_ACEOF
-#define HAVE_TRANSPORT_LIBGSM0710MUX 1
-_ACEOF
-
-   fi
 fi
 
 #
@@ -22246,9 +22353,6 @@ echo
 echo "  Logging Support...........: ${want_logging}"
 echo
 echo "  Plugin & Subsystem........: ${want_subsystem}"
-echo
-echo "  Transport Support.........: ${want_transport}"
-echo "    - libgsm0710mux.........: ${want_transportlibgsm0710mux}"
 echo
 echo "  Compilation...............: make"
 echo
