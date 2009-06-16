@@ -20871,7 +20871,7 @@ fi
 #
 # output
 #
-ac_config_files="$ac_config_files Makefile fsoframework-2.0.pc fsoframework/Makefile tests/Makefile vapi/Makefile"
+ac_config_files="$ac_config_files Makefile fsoframework-2.0.pc fsoframework/Makefile tests/Makefile"
 
 
 cat >confcache <<\_ACEOF
@@ -21506,7 +21506,6 @@ do
     "fsoframework-2.0.pc") CONFIG_FILES="$CONFIG_FILES fsoframework-2.0.pc" ;;
     "fsoframework/Makefile") CONFIG_FILES="$CONFIG_FILES fsoframework/Makefile" ;;
     "tests/Makefile") CONFIG_FILES="$CONFIG_FILES tests/Makefile" ;;
-    "vapi/Makefile") CONFIG_FILES="$CONFIG_FILES vapi/Makefile" ;;
 
   *) { { $as_echo "$as_me:$LINENO: error: invalid argument: $ac_config_target" >&5
 $as_echo "$as_me: error: invalid argument: $ac_config_target" >&2;}
