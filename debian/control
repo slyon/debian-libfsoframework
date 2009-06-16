@@ -1,14 +1,14 @@
 Source: libfsoframework
 Priority: extra
 Maintainer: Heiko Stuebner <heiko@sntech.de>
-Build-Depends: debhelper (>= 7), cdbs, pkg-config, valac (>= 0.7.3), libvala-dev, libglib2.0-dev, libdbus-1-dev, libdbus-glib-1-dev
+Build-Depends: debhelper (>= 7), cdbs, pkg-config, valac (>= 0.7.3), libvala-dev, libglib2.0-dev, libdbus-1-dev, libdbus-glib-1-dev, fso-misc-vapi
 Standards-Version: 3.8.1
 Section: libs
 
 Package: libfsoframework-dev
 Section: libdevel
 Architecture: any
-Depends: libfsoframework0 (= ${binary:Version}), ${misc:Depends}, pkg-config, libdbus-1-dev, libdbus-glib-1-dev
+Depends: libfsoframework0 (= ${binary:Version}), ${misc:Depends}, pkg-config, libdbus-1-dev, libdbus-glib-1-dev, fso-misc-vapi
 Description: Development files for libfsoframework
  This library contains utility functions for
  freesmartphone.org API implementors.

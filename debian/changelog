@@ -1,3 +1,10 @@
+libfsoframework (0+git20090616-1) UNRELEASED; urgency=low
+
+  * new upstream snapshot
+  * build-depend on fso-misc-vapi
+
+ -- Heiko Stuebner <heiko@sntech.de>  Tue, 16 Jun 2009 20:10:12 +0200
+
 libfsoframework (0+git20090531-1) UNRELEASED; urgency=low
 
   * new upstream snapshot
