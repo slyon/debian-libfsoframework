@@ -793,10 +793,13 @@ ac_includes_default="\
 
 ac_subst_vars='LTLIBOBJS
 LIBOBJS
+ALSA_LIBS
+ALSA_CFLAGS
 DBUS_LIBS
 DBUS_CFLAGS
 GLIB_LIBS
 GLIB_CFLAGS
+VALA_VAPIDIR
 VALA_LIBS
 VALA_CFLAGS
 VALAC
@@ -942,7 +945,9 @@ VALA_LIBS
 GLIB_CFLAGS
 GLIB_LIBS
 DBUS_CFLAGS
-DBUS_LIBS'
+DBUS_LIBS
+ALSA_CFLAGS
+ALSA_LIBS'
 
 
 # Initialize some variables set by options.
@@ -1613,6 +1618,8 @@ Some influential environment variables:
   GLIB_LIBS   linker flags for GLIB, overriding pkg-config
   DBUS_CFLAGS C compiler flags for DBUS, overriding pkg-config
   DBUS_LIBS   linker flags for DBUS, overriding pkg-config
+  ALSA_CFLAGS C compiler flags for ALSA, overriding pkg-config
+  ALSA_LIBS   linker flags for ALSA, overriding pkg-config
 
 Use these variables to override the choices made by `configure' or to help
 it to find libraries and programs with nonstandard names/locations.
@@ -4572,7 +4579,7 @@ ia64-*-hpux*)
   ;;
 *-*-irix6*)
   # Find out which ABI we are using.
-  echo '#line 4575 "configure"' > conftest.$ac_ext
+  echo '#line 4582 "configure"' > conftest.$ac_ext
   if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -7657,11 +7664,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:7660: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:7667: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:7664: \$? = $ac_status" >&5
+   echo "$as_me:7671: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -7947,11 +7954,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:7950: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:7957: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:7954: \$? = $ac_status" >&5
+   echo "$as_me:7961: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -8051,11 +8058,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:8054: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:8061: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:8058: \$? = $ac_status" >&5
+   echo "$as_me:8065: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -10464,7 +10471,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 10467 "configure"
+#line 10474 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -10564,7 +10571,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 10567 "configure"
+#line 10574 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -12973,11 +12980,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:12976: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:12983: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:12980: \$? = $ac_status" >&5
+   echo "$as_me:12987: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -13077,11 +13084,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:13080: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:13087: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:13084: \$? = $ac_status" >&5
+   echo "$as_me:13091: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -14675,11 +14682,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:14678: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:14685: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:14682: \$? = $ac_status" >&5
+   echo "$as_me:14689: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -14779,11 +14786,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:14782: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:14789: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:14786: \$? = $ac_status" >&5
+   echo "$as_me:14793: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -17007,11 +17014,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:17010: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:17017: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:17014: \$? = $ac_status" >&5
+   echo "$as_me:17021: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -17297,11 +17304,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:17300: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:17307: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:17304: \$? = $ac_status" >&5
+   echo "$as_me:17311: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -17401,11 +17408,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:17404: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:17411: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:17408: \$? = $ac_status" >&5
+   echo "$as_me:17415: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -20228,6 +20235,7 @@ VALA_REQUIRED=0.7.3
 DBUS_REQUIRED=1.2.1
 DBUS_GLIB_REQUIRED=0.76
 GLIB_REQUIRED=2.18.0
+ALSA_REQUIRED=0.20
 
 # vala
 # Extract the first word of "valac", so it can be a program name with args.
@@ -20384,6 +20392,30 @@ else
         { $as_echo "$as_me:$LINENO: result: yes" >&5
 $as_echo "yes" >&6; }
 	:
+fi
+
+#
+# vala vapi files
+#
+VALA_VAPIDIR=`$PKG_CONFIG --variable=vapidir vala-1.0`
+
+
+{ $as_echo "$as_me:$LINENO: checking for misc-vapi..." >&5
+$as_echo "$as_me: checking for misc-vapi..." >&6;}
+if ! test -f "$VALA_VAPIDIR/linux26.vapi"; then
+  { { $as_echo "$as_me:$LINENO: error: linux26.vapi not found." >&5
+$as_echo "$as_me: error: linux26.vapi not found." >&2;}
+   { (exit 1); exit 1; }; }
+fi
+if ! test -f "$VALA_VAPIDIR/libasound.vapi"; then
+  { { $as_echo "$as_me:$LINENO: error: libasound.vapi not found." >&5
+$as_echo "$as_me: error: libasound.vapi not found." >&2;}
+   { (exit 1); exit 1; }; }
+fi
+if ! test -f "$VALA_VAPIDIR/libcanberra.vapi"; then
+  { { $as_echo "$as_me:$LINENO: error: libcanberra.vapi not found." >&5
+$as_echo "$as_me: error: libcanberra.vapi not found." >&2;}
+   { (exit 1); exit 1; }; }
 fi
 
 # glib and friends
@@ -20650,8 +20682,125 @@ fi
 
 
 
+# alsa
+
+pkg_failed=no
+{ $as_echo "$as_me:$LINENO: checking for ALSA" >&5
+$as_echo_n "checking for ALSA... " >&6; }
+
+if test -n "$PKG_CONFIG"; then
+    if test -n "$ALSA_CFLAGS"; then
+        pkg_cv_ALSA_CFLAGS="$ALSA_CFLAGS"
+    else
+        if test -n "$PKG_CONFIG" && \
+    { ($as_echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"alsa >= \$ALSA_REQUIRED\"") >&5
+  ($PKG_CONFIG --exists --print-errors "alsa >= $ALSA_REQUIRED") 2>&5
+  ac_status=$?
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; then
+  pkg_cv_ALSA_CFLAGS=`$PKG_CONFIG --cflags "alsa >= $ALSA_REQUIRED" 2>/dev/null`
+else
+  pkg_failed=yes
+fi
+    fi
+else
+	pkg_failed=untried
+fi
+if test -n "$PKG_CONFIG"; then
+    if test -n "$ALSA_LIBS"; then
+        pkg_cv_ALSA_LIBS="$ALSA_LIBS"
+    else
+        if test -n "$PKG_CONFIG" && \
+    { ($as_echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"alsa >= \$ALSA_REQUIRED\"") >&5
+  ($PKG_CONFIG --exists --print-errors "alsa >= $ALSA_REQUIRED") 2>&5
+  ac_status=$?
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; then
+  pkg_cv_ALSA_LIBS=`$PKG_CONFIG --libs "alsa >= $ALSA_REQUIRED" 2>/dev/null`
+else
+  pkg_failed=yes
+fi
+    fi
+else
+	pkg_failed=untried
+fi
+
+
+
+if test $pkg_failed = yes; then
+
+if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+        _pkg_short_errors_supported=yes
+else
+        _pkg_short_errors_supported=no
+fi
+        if test $_pkg_short_errors_supported = yes; then
+	        ALSA_PKG_ERRORS=`$PKG_CONFIG --short-errors --errors-to-stdout --print-errors "alsa >= $ALSA_REQUIRED"`
+        else
+	        ALSA_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "alsa >= $ALSA_REQUIRED"`
+        fi
+	# Put the nasty error message in config.log where it belongs
+	echo "$ALSA_PKG_ERRORS" >&5
+
+	{ { $as_echo "$as_me:$LINENO: error: Package requirements (alsa >= $ALSA_REQUIRED) were not met:
+
+$ALSA_PKG_ERRORS
+
+Consider adjusting the PKG_CONFIG_PATH environment variable if you
+installed software in a non-standard prefix.
+
+Alternatively, you may set the environment variables ALSA_CFLAGS
+and ALSA_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+" >&5
+$as_echo "$as_me: error: Package requirements (alsa >= $ALSA_REQUIRED) were not met:
+
+$ALSA_PKG_ERRORS
+
+Consider adjusting the PKG_CONFIG_PATH environment variable if you
+installed software in a non-standard prefix.
+
+Alternatively, you may set the environment variables ALSA_CFLAGS
+and ALSA_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+" >&2;}
+   { (exit 1); exit 1; }; }
+elif test $pkg_failed = untried; then
+	{ { $as_echo "$as_me:$LINENO: error: in \`$ac_pwd':" >&5
+$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
+{ { $as_echo "$as_me:$LINENO: error: The pkg-config script could not be found or is too old.  Make sure it
+is in your PATH or set the PKG_CONFIG environment variable to the full
+path to pkg-config.
+
+Alternatively, you may set the environment variables ALSA_CFLAGS
+and ALSA_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+
+To get pkg-config, see <http://pkg-config.freedesktop.org/>.
+See \`config.log' for more details." >&5
+$as_echo "$as_me: error: The pkg-config script could not be found or is too old.  Make sure it
+is in your PATH or set the PKG_CONFIG environment variable to the full
+path to pkg-config.
+
+Alternatively, you may set the environment variables ALSA_CFLAGS
+and ALSA_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+
+To get pkg-config, see <http://pkg-config.freedesktop.org/>.
+See \`config.log' for more details." >&2;}
+   { (exit 1); exit 1; }; }; }
+else
+	ALSA_CFLAGS=$pkg_cv_ALSA_CFLAGS
+	ALSA_LIBS=$pkg_cv_ALSA_LIBS
+        { $as_echo "$as_me:$LINENO: result: yes" >&5
+$as_echo "yes" >&6; }
+	:
+fi
+
+
+
 #
-# eventfd
+# we need eventfd
 #
 if test "${ac_cv_header_sys_eventfd_h+set}" = set; then
   { $as_echo "$as_me:$LINENO: checking for sys/eventfd.h" >&5
@@ -20788,8 +20937,8 @@ fi
 if test "x$ac_cv_header_sys_eventfd_h" = x""yes; then
   :
 else
-  { { $as_echo "$as_me:$LINENO: error: Couldn't find sys/eventfd.h... your glib is too old :( " >&5
-$as_echo "$as_me: error: Couldn't find sys/eventfd.h... your glib is too old :( " >&2;}
+  { { $as_echo "$as_me:$LINENO: error: Couldn't find sys/eventfd.h... your glibc is too old :( " >&5
+$as_echo "$as_me: error: Couldn't find sys/eventfd.h... your glibc is too old :( " >&2;}
    { (exit 1); exit 1; }; }
 fi
 
