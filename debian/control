@@ -2,7 +2,7 @@ Source: libfsoframework
 Priority: extra
 Maintainer: Debian FreeSmartphone.Org Team <pkg-fso-maint@lists.alioth.debian.org>
 Uploaders: Joachim Breitner <nomeata@debian.org>, Luca Capello <luca@pca.it>, Heiko Stuebner <heiko@sntech.de>
-Build-Depends: debhelper (>= 7), cdbs, pkg-config, valac (>= 0.7.3), libvala-dev, libglib2.0-dev, libdbus-1-dev, libdbus-glib-1-dev, fso-misc-vapi
+Build-Depends: debhelper (>= 7), cdbs, pkg-config, valac (>= 0.7.3), libvala-dev, libglib2.0-dev, libdbus-1-dev, libdbus-glib-1-dev, fso-misc-vapi, libasound2-dev
 Standards-Version: 3.8.1
 Section: libs
 Homepage: http://freesmartphone.org/

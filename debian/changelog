@@ -1,3 +1,9 @@
+libfsoframework (0+git20090623-2) pkg-fso; urgency=low
+
+  * missed libasound2-dev build-dep
+
+ -- Heiko Stuebner <heiko@sntech.de>  Tue, 23 Jun 2009 22:25:12 +0200
+
 libfsoframework (0+git20090623-1) pkg-fso; urgency=low
 
   * new upstream snapshot
