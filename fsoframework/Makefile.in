@@ -59,11 +59,12 @@ libLTLIBRARIES_INSTALL = $(INSTALL)
 LTLIBRARIES = $(lib_LTLIBRARIES)
 am__DEPENDENCIES_1 =
 libfsoframework_la_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
+	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
+	$(am__DEPENDENCIES_1)
 am__objects_1 =
-am__objects_2 = asyncworker.lo common.lo interfaces.lo logger.lo \
-	kobjectnotifier.lo object.lo plugin.lo smartkeyfile.lo \
-	subsystem.lo utilities.lo $(am__objects_1)
+am__objects_2 = alsa.lo asyncworker.lo common.lo interfaces.lo \
+	logger.lo kobjectnotifier.lo object.lo plugin.lo \
+	smartkeyfile.lo subsystem.lo utilities.lo $(am__objects_1)
 am_libfsoframework_la_OBJECTS = $(am__objects_2) $(am__objects_1)
 libfsoframework_la_OBJECTS = $(am_libfsoframework_la_OBJECTS)
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
@@ -88,6 +89,8 @@ ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
+ALSA_CFLAGS = @ALSA_CFLAGS@
+ALSA_LIBS = @ALSA_LIBS@
 AMTAR = @AMTAR@
 AR = @AR@
 AUTOCONF = @AUTOCONF@
@@ -151,6 +154,7 @@ STRIP = @STRIP@
 VALAC = @VALAC@
 VALA_CFLAGS = @VALA_CFLAGS@
 VALA_LIBS = @VALA_LIBS@
+VALA_VAPIDIR = @VALA_VAPIDIR@
 VERSION = @VERSION@
 abs_builddir = @abs_builddir@
 abs_srcdir = @abs_srcdir@
@@ -216,6 +220,7 @@ AM_CPPFLAGS = \
 	-I$(top_srcdir) \
 	$(GLIB_CFLAGS) \
 	$(DBUS_CFLAGS) \
+	$(ALSA_CFLAGS) \
 	$(NULL)
 
 BUILT_SOURCES = fsoframework.vala.stamp
@@ -223,6 +228,7 @@ lib_LTLIBRARIES = \
 	libfsoframework.la
 
 libfsoframework_la_VALASOURCES = \
+	alsa.vala \
 	asyncworker.vala \
 	common.vala \
 	interfaces.vala \
@@ -245,6 +251,7 @@ fsoframeworkinclude_HEADERS = fsoframework.h
 libfsoframework_la_LIBADD = \
 	$(GLIB_LIBS) \
 	$(DBUS_LIBS) \
+	$(ALSA_LIBS) \
 	$(NULL)
 
 vapidir = $(datadir)/vala/vapi
@@ -333,6 +340,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/alsa.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/asyncworker.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/common.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/interfaces.Plo@am__quote@
