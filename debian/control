@@ -12,7 +12,7 @@ Vcs-Browser: http://git.debian.org/?p=pkg-fso/fso-misc-vapi.git;a=summary
 Package: libfsoframework-dev
 Section: libdevel
 Architecture: any
-Depends: libfsoframework0 (= ${binary:Version}), ${misc:Depends}, libdbus-1-dev, libdbus-glib-1-dev, fso-misc-vapi
+Depends: libfsoframework0 (= ${binary:Version}), ${misc:Depends}, libdbus-1-dev, libdbus-glib-1-dev, fso-misc-vapi, libasound2-dev
 Description: Development files for libfsoframework
  This library contains utility functions for
  freesmartphone.org API implementors.
