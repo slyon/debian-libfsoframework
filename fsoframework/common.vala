@@ -19,10 +19,6 @@
 
 using GLib;
 
-internal const string DBUS_BUS_NAME = "org.freedesktop.DBus";
-internal const string DBUS_BUS_PATH = "/org/freedesktop/DBus";
-internal const string DBUS_BUS_INTERFACE = "org.freedesktop.DBus";
-
 internal const string ENV_OVERRIDE_LOG_TO = "FSO_LOG_TO";
 internal const string ENV_OVERRIDE_LOG_DESTINATION = "FSO_LOG_DESTINATION";
 internal const string ENV_OVERRIDE_LOG_LEVEL = "FSO_LOG_LEVEL";
@@ -38,6 +34,8 @@ internal const string PROC_SELF_CMDLINE = "/proc/self/cmdline";
 
 internal static SmartKeyFile _masterkeyfile = null;
 internal static string _prefix = null;
+
+internal static DBusServiceNotifier _dbusservicenotifier = null;
 
 /**
  * @returns @a SmartKeyFile for frameworkd.conf
@@ -140,5 +138,18 @@ public static string getPrefixForExecutable()
     }
     return _prefix;
 }
+
+/**
+ * @returns @a DBusServiceNotifier
+ **/
+public static DBusServiceNotifier theDBusServiceNotifier()
+{
+    if ( _dbusservicenotifier == null )
+    {
+        _dbusservicenotifier = new DBusServiceNotifier();
+    }
+    return _dbusservicenotifier;
+}
+
 
 } /* namespace */
