@@ -105,6 +105,13 @@ public abstract class FsoFramework.AbstractLogger : FsoFramework.Logger, Object
             write( format( message, "ERROR" ) );
     }
 
+    public void critical( string message )
+    {
+        write( format( message, "CRITICAL" ) );
+        assert_not_reached();
+        //FIXME: Trigger dumping a backtrace, if possible
+    }
+
     public static string levelToString( LogLevelFlags level )
     {
     // FIXME: might use a static HashTable here, might also be overkill for 4 values
@@ -114,7 +121,7 @@ public abstract class FsoFramework.AbstractLogger : FsoFramework.Logger, Object
             case LogLevelFlags.LEVEL_INFO: return "INFO";
             case LogLevelFlags.LEVEL_WARNING: return "WARNING";
             case LogLevelFlags.LEVEL_ERROR: return "ERROR";
-            default: assert( false ); break;
+            default: assert_not_reached(); break;
         }
         return "N/A";
     }
@@ -124,14 +131,20 @@ public abstract class FsoFramework.AbstractLogger : FsoFramework.Logger, Object
         switch ( level )
         {
             case "debug":
-                case "DEBUG": return LogLevelFlags.LEVEL_DEBUG;
+            case "DEBUG":
+                return LogLevelFlags.LEVEL_DEBUG;
             case "info":
-                case "INFO": return LogLevelFlags.LEVEL_INFO;
+            case "INFO":
+                return LogLevelFlags.LEVEL_INFO;
             case "warning":
-                case "WARNING": return LogLevelFlags.LEVEL_WARNING;
+            case "WARNING":
+                return LogLevelFlags.LEVEL_WARNING;
             case "error":
-                case "ERROR": return LogLevelFlags.LEVEL_ERROR;
-                default: assert( false ); break;
+            case "ERROR":
+                return LogLevelFlags.LEVEL_ERROR;
+            default:
+                message( "Loglevel not defined, reverting to INFO\n" );
+                break;
         }
         return LogLevelFlags.LEVEL_INFO;
     }
@@ -170,7 +183,7 @@ public class FsoFramework.FileLogger : FsoFramework.AbstractLogger
         base( domain );
     }
 
-    public void setFile( string filename, bool append = false )
+    public void setFile( string filename, bool append = true )
     {
         if ( file != -1 )
         {

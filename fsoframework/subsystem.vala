@@ -194,7 +194,7 @@ public class FsoFramework.DBusSubsystem : FsoFramework.AbstractSubsystem
         if ( _dbusconn == null )
         {
             _dbusconn = DBus.Bus.get( DBus.BusType.SYSTEM );
-            _dbusobj = _dbusconn.get_object( DBUS_BUS_NAME, DBUS_BUS_PATH, DBUS_BUS_INTERFACE );
+            _dbusobj = _dbusconn.get_object( DBus.DBUS_SERVICE_DBUS, DBus.DBUS_PATH_DBUS, DBus.DBUS_INTERFACE_DBUS );
         }
         assert ( _dbusconn != null );
         assert ( _dbusobj != null );
@@ -217,8 +217,11 @@ public class FsoFramework.DBusSubsystem : FsoFramework.AbstractSubsystem
         var conn = _dbusconnections.lookup( servicename );
         assert ( conn != null );
 
-        conn.register_object( objectname, obj );
-        _dbusobjects.insert( objectname, obj );
+        // clean objectname
+        var cleanedname = objectname.replace( "-", "_" ).replace( ":", "_" );
+
+        conn.register_object( cleanedname, obj );
+        _dbusobjects.insert( cleanedname, obj );
         return true;
     }
 
