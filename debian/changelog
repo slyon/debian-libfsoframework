@@ -1,3 +1,9 @@
+libfsoframework (0+git20090716-1) pkg-fso; urgency=low
+
+  * new upstream-snapshot
+
+ -- Heiko Stuebner <heiko@sntech.de>  Thu, 16 Jul 2009 19:38:12 +0200
+
 libfsoframework (0+git20090626-1) pkg-fso; urgency=low
 
   * new upstream-snapshot
