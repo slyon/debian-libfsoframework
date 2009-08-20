@@ -24,16 +24,18 @@ public abstract class FsoFramework.AbstractObject : GLib.Object
 {
     protected FsoFramework.SmartKeyFile config;
     protected FsoFramework.Logger logger;
-    public string classname { get; construct; }
+    public string classname;
 
-    construct
+    public AbstractObject()
     {
         classname = Type.from_instance( this ).name();
         config = FsoFramework.theMasterKeyFile();
-        logger = FsoFramework.createLogger( classname );
+        logger = FsoFramework.createLogger( FsoFramework.Utility.programName(), classname );
         logger.setReprDelegate( repr );
+#if DEBUG
+        message( "FsoFramework.AbstractObject: created logger for domain '%s'", classname );
+#endif
     }
 
     public abstract string repr();
 }
-
