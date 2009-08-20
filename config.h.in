@@ -6,12 +6,6 @@
 /* Define to 1 if you have the <inttypes.h> header file. */
 #undef HAVE_INTTYPES_H
 
-/* Have keyfile support built in */
-#undef HAVE_KEYFILE
-
-/* Have logging support built in */
-#undef HAVE_LOGGING
-
 /* Define to 1 if you have the <memory.h> header file. */
 #undef HAVE_MEMORY_H
 
@@ -26,9 +20,6 @@
 
 /* Define to 1 if you have the <string.h> header file. */
 #undef HAVE_STRING_H
-
-/* Have subsystem and plugin support built in */
-#undef HAVE_SUBSYSTEM
 
 /* Define to 1 if you have the <sys/stat.h> header file. */
 #undef HAVE_SYS_STAT_H

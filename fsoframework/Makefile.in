@@ -60,11 +60,11 @@ LTLIBRARIES = $(lib_LTLIBRARIES)
 am__DEPENDENCIES_1 =
 libfsoframework_la_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
+	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 am__objects_1 =
 am__objects_2 = alsa.lo asyncworker.lo common.lo dbus.lo interfaces.lo \
-	logger.lo kobjectnotifier.lo object.lo plugin.lo \
-	smartkeyfile.lo subsystem.lo utilities.lo $(am__objects_1)
+	kobjectnotifier.lo object.lo plugin.lo subsystem.lo \
+	$(am__objects_1)
 am_libfsoframework_la_OBJECTS = $(am__objects_2) $(am__objects_1)
 libfsoframework_la_OBJECTS = $(am_libfsoframework_la_OBJECTS)
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
@@ -115,6 +115,8 @@ ECHO_T = @ECHO_T@
 EGREP = @EGREP@
 EXEEXT = @EXEEXT@
 FGREP = @FGREP@
+FSOBASICS_CFLAGS = @FSOBASICS_CFLAGS@
+FSOBASICS_LIBS = @FSOBASICS_LIBS@
 GLIB_CFLAGS = @GLIB_CFLAGS@
 GLIB_LIBS = @GLIB_LIBS@
 GREP = @GREP@
@@ -222,6 +224,7 @@ AM_CPPFLAGS = \
 	$(GLIB_CFLAGS) \
 	$(DBUS_CFLAGS) \
 	$(ALSA_CFLAGS) \
+	$(FSOBASICS_CFLAGS) \
 	$(NULL)
 
 BUILT_SOURCES = fsoframework.vala.stamp
@@ -234,13 +237,10 @@ libfsoframework_la_VALASOURCES = \
 	common.vala \
 	dbus.vala \
 	interfaces.vala \
-	logger.vala \
 	kobjectnotifier.vala \
 	object.vala \
 	plugin.vala \
-	smartkeyfile.vala \
 	subsystem.vala \
-	utilities.vala \
 	$(NULL)
 
 libfsoframework_la_SOURCES = \
@@ -254,6 +254,7 @@ libfsoframework_la_LIBADD = \
 	$(GLIB_LIBS) \
 	$(DBUS_LIBS) \
 	$(ALSA_LIBS) \
+	$(FSOBASICS_LIBS) \
 	$(NULL)
 
 vapidir = $(datadir)/vala/vapi
@@ -348,12 +349,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dbus.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/interfaces.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/kobjectnotifier.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/logger.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/object.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/plugin.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/smartkeyfile.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/subsystem.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/utilities.Plo@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -668,6 +666,7 @@ fsoframework-1.0.vapi fsoframework.vala.stamp: $(libfsoframework_la_VALASOURCES)
 	            --pkg gio-2.0 \
 	            --pkg dbus-glib-1 \
 	            --pkg libasound \
+	            --pkg fsobasics-2.0 \
 	            --header fsoframework.h \
 	            --library fsoframework-2.0 $^
 	touch $@
