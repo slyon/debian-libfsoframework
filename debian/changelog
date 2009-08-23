@@ -1,3 +1,10 @@
+libfsoframework (0+git20090823-1) pkg-fso; urgency=low
+
+  * new upstream-snapshot
+  * fixes a bug in handling of plugins in fsousaged
+
+ -- Heiko Stuebner <heiko@sntech.de>  Sun, 23 Aug 2009 14:38:12 +0200
+
 libfsoframework (0+git20090820-1) pkg-fso; urgency=low
 
   * new upstream-snapshot
