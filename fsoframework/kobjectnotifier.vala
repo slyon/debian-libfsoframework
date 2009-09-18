@@ -58,12 +58,12 @@ public class FsoFramework.BaseKObjectNotifier : Object
         change = new HashTable<string, List<DelegateHolder>>( str_hash, str_equal );
         remove = new HashTable<string, List<DelegateHolder>>( str_hash, str_equal );
 
-        fd = Posix.socket( Linux26.Netlink.AF_NETLINK, Posix.SOCK_DGRAM, Linux26.Netlink.NETLINK_KOBJECT_UEVENT );
+        fd = Posix.socket( Linux.Netlink.AF_NETLINK, Posix.SOCK_DGRAM, Linux.Netlink.NETLINK_KOBJECT_UEVENT );
         assert( fd != -1 );
 
-        Linux26.Netlink.SockAddrNl addr = { Linux26.Netlink.AF_NETLINK, 0, Posix.getpid(), 1 };
+        Linux.Netlink.SockAddrNl addr = { Linux.Netlink.AF_NETLINK, 0, Posix.getpid(), 1 };
 
-        var res = Posix.bind( fd, &addr, sizeof( Linux26.Netlink.SockAddrNl ) );
+        var res = Posix.bind( fd, &addr, sizeof( Linux.Netlink.SockAddrNl ) );
         assert( res != -1 );
 
         channel = new IOChannel.unix_new( fd );
@@ -126,7 +126,7 @@ public class FsoFramework.BaseKObjectNotifier : Object
 
         message( "dealing with action '%s' for subsystem '%s'", action, subsystem );
 
-        HashTable<string, List<DelegateHolder>> table;
+        HashTable<string, List<DelegateHolder>> table = null;
 
         switch( action )
         {
@@ -140,7 +140,8 @@ public class FsoFramework.BaseKObjectNotifier : Object
                 table = remove;
                 break;
             default:
-                assert_not_reached();
+                critical( "unrecognized kobject message action '%s' invalid, must be one of { add, change, remove }", action );
+                break;
         }
 
         weak List<weak DelegateHolder> list = table.lookup( subsystem );
@@ -153,7 +154,7 @@ public class FsoFramework.BaseKObjectNotifier : Object
 
     protected void _addMatch( string action, string subsystem, KObjectNotifierFunc callback )
     {
-        HashTable<string, List<DelegateHolder>> table; 
+        HashTable<string, List<DelegateHolder>> table = null;
 
         switch( action )
         {
@@ -167,7 +168,8 @@ public class FsoFramework.BaseKObjectNotifier : Object
                 table = remove;
                 break;
             default:
-                assert_not_reached();
+                critical( "addMatch action '%s' invalid, must be one of { add, change, remove }", action );
+                break;
         }
 
         weak List<DelegateHolder> list = table.lookup( subsystem );

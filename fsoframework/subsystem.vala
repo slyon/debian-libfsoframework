@@ -31,6 +31,8 @@ public interface FsoFramework.Subsystem : Object
 
     public abstract bool registerServiceName( string servicename );
     public abstract bool registerServiceObject( string servicename, string objectname, Object obj );
+
+    public abstract void shutdown();
 }
 
 /**
@@ -130,6 +132,14 @@ public abstract class FsoFramework.AbstractSubsystem : FsoFramework.Subsystem, O
     {
         return false;
     }
+
+    public void shutdown()
+    {
+        foreach ( var plugin in _plugins )
+        {
+            plugin.shutdown();
+        }
+    }
 }
 
 /**
@@ -146,11 +156,14 @@ public class FsoFramework.BaseSubsystem : FsoFramework.AbstractSubsystem
 /**
  * Subsystem query interface
  */
+
+/*
 [DBus (name = "org.freesmartphone.DBus.Objects")]
 public abstract interface DBusObjects
 {
     public abstract void getNodes() throws DBus.Error;
 }
+*/
 
 /**
  * DBusSubsystem

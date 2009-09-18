@@ -51,6 +51,9 @@ namespace FsoFramework
         public const string LedServiceFace = ServiceFacePrefix + ".LED";
         public const string LedServicePath = ServicePathPrefix + "/LED";
 
+        public const string OrientationServiceFace = ServiceFacePrefix + ".Orientation";
+        public const string OrientationServicePath = ServicePathPrefix + "/Orientation";
+
         public const string PowerControlServiceFace = ServiceFacePrefix + ".PowerControl";
         public const string PowerControlServicePath = ServicePathPrefix + "/PowerControl";
 
@@ -59,6 +62,17 @@ namespace FsoFramework
 
         public const string RtcServiceFace = ServiceFacePrefix + ".RTC";
         public const string RtcServicePath = ServicePathPrefix + "/RTC";
+    }
+
+    namespace GSM
+    {
+        public const string ServiceDBusName = FsoFramework.ServiceDBusPrefix + ".ogsmd";
+
+        public const string ServiceFacePrefix = FsoFramework.ServiceFacePrefix + ".GSM";
+        public const string ServicePathPrefix = FsoFramework.ServicePathPrefix + "/GSM";
+
+        public const string DeviceServiceFace = ServiceFacePrefix + ".Device";
+        public const string DeviceServicePath = ServicePathPrefix + "/Device";
     }
 
     namespace Network
