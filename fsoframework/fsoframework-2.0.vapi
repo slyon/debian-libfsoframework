@@ -44,6 +44,10 @@ namespace FsoFramework {
 		[CCode (cheader_filename = "fsoframework.h")]
 		public const string LedServicePath;
 		[CCode (cheader_filename = "fsoframework.h")]
+		public const string OrientationServiceFace;
+		[CCode (cheader_filename = "fsoframework.h")]
+		public const string OrientationServicePath;
+		[CCode (cheader_filename = "fsoframework.h")]
 		public const string PowerControlServiceFace;
 		[CCode (cheader_filename = "fsoframework.h")]
 		public const string PowerControlServicePath;
@@ -55,6 +59,19 @@ namespace FsoFramework {
 		public const string RtcServiceFace;
 		[CCode (cheader_filename = "fsoframework.h")]
 		public const string RtcServicePath;
+		[CCode (cheader_filename = "fsoframework.h")]
+		public const string ServiceDBusName;
+		[CCode (cheader_filename = "fsoframework.h")]
+		public const string ServiceFacePrefix;
+		[CCode (cheader_filename = "fsoframework.h")]
+		public const string ServicePathPrefix;
+	}
+	[CCode (cprefix = "FsoFrameworkGSM", lower_case_cprefix = "fso_framework_gsm_")]
+	namespace GSM {
+		[CCode (cheader_filename = "fsoframework.h")]
+		public const string DeviceServiceFace;
+		[CCode (cheader_filename = "fsoframework.h")]
+		public const string DeviceServicePath;
 		[CCode (cheader_filename = "fsoframework.h")]
 		public const string ServiceDBusName;
 		[CCode (cheader_filename = "fsoframework.h")]
@@ -121,22 +138,22 @@ namespace FsoFramework {
 	public class AsyncWorkerQueue<T> : FsoFramework.AbstractWorkerQueue<T>, GLib.Object {
 		protected GLib.Queue<T> q;
 		protected FsoFramework.AbstractWorkerQueue.WorkerFunc worker;
-		protected bool _onIdle ();
 		public AsyncWorkerQueue ();
+		protected bool _onIdle ();
 	}
 	[CCode (cheader_filename = "fsoframework.h")]
 	public class BaseKObjectNotifier : GLib.Object {
 		public static FsoFramework.BaseKObjectNotifier instance;
+		public BaseKObjectNotifier ();
 		protected void _addMatch (string action, string subsystem, FsoFramework.KObjectNotifierFunc callback);
 		public static void addMatch (string action, string path, FsoFramework.KObjectNotifierFunc callback);
 		protected void handleMessage (string[] parts);
-		public BaseKObjectNotifier ();
 		protected bool onActionFromSocket (GLib.IOChannel source, GLib.IOCondition condition);
 	}
 	[CCode (cheader_filename = "fsoframework.h")]
 	public class BasePlugin : FsoFramework.Plugin, GLib.TypeModule {
-		public override bool load ();
 		public BasePlugin (string filename, FsoFramework.Subsystem subsystem);
+		public override bool load ();
 		public override void unload ();
 	}
 	[CCode (cheader_filename = "fsoframework.h")]
@@ -152,12 +169,12 @@ namespace FsoFramework {
 	}
 	[CCode (cheader_filename = "fsoframework.h")]
 	public class DBusSubsystem : FsoFramework.AbstractSubsystem {
-		public DBus.Connection dbusConnection ();
 		public DBusSubsystem (string name);
+		public DBus.Connection dbusConnection ();
 		public override bool registerServiceName (string servicename);
 		public override bool registerServiceObject (string servicename, string objectname, GLib.Object obj);
 	}
-	[CCode (ref_function = "fso_framework_mixer_control_ref", unref_function = "fso_framework_mixer_control_unref", param_spec_function = "fso_framework_param_spec_mixer_control", cheader_filename = "fsoframework.h")]
+	[CCode (ref_function = "fso_framework_mixer_control_ref", unref_function = "fso_framework_mixer_control_unref", cheader_filename = "fsoframework.h")]
 	public class MixerControl {
 		public Alsa.ElemId eid;
 		public Alsa.ElemInfo info;
@@ -189,6 +206,7 @@ namespace FsoFramework {
 	public interface Plugin : GLib.Object {
 		public abstract FsoFramework.PluginInfo info ();
 		public abstract void loadAndInit () throws FsoFramework.PluginError;
+		public abstract void shutdown ();
 	}
 	[CCode (cheader_filename = "fsoframework.h")]
 	public interface Subsystem : GLib.Object {
@@ -198,6 +216,7 @@ namespace FsoFramework {
 		public abstract uint registerPlugins ();
 		public abstract bool registerServiceName (string servicename);
 		public abstract bool registerServiceObject (string servicename, string objectname, GLib.Object obj);
+		public abstract void shutdown ();
 	}
 	[CCode (type_id = "FSO_FRAMEWORK_TYPE_PLUGIN_INFO", cheader_filename = "fsoframework.h")]
 	public struct PluginInfo {
@@ -226,6 +245,8 @@ namespace FsoFramework {
 	public delegate void KObjectNotifierFunc (GLib.HashTable<string,string> properties);
 	[CCode (cheader_filename = "fsoframework.h", has_target = false)]
 	public delegate void RegisterFunc (GLib.TypeModule bar);
+	[CCode (cheader_filename = "fsoframework.h", has_target = false)]
+	public delegate void ShutdownFunc ();
 	[CCode (cheader_filename = "fsoframework.h")]
 	public const string ServiceDBusPrefix;
 	[CCode (cheader_filename = "fsoframework.h")]
@@ -238,9 +259,4 @@ namespace FsoFramework {
 	public static FsoFramework.DBusServiceNotifier theDBusServiceNotifier ();
 	[CCode (cheader_filename = "fsoframework.h")]
 	public static FsoFramework.SmartKeyFile theMasterKeyFile ();
-}
-[CCode (cheader_filename = "fsoframework.h")]
-[DBus (name = "org.freesmartphone.DBus.Objects")]
-public interface DBusObjects {
-	public abstract void getNodes () throws DBus.Error;
 }
