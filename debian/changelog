@@ -1,3 +1,9 @@
+libfsoframework (0.2.3-1) unstable; urgency=low
+
+  * new upstream release
+
+ -- Heiko Stuebner <heiko@sntech.de>  Mon, 21 Sep 2009 20:00:23 +0200
+
 libfsoframework (0+git20090823-2) unstable; urgency=low
 
   * fixed dependencies of libfsoframework-dev to include libfsobasics-dev
