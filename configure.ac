@@ -1,4 +1,4 @@
-AC_INIT([libfsoframework], [0.2.3], [smartphones-userland@linuxtogo.org], [libfsoframework])
+AC_INIT([libfsoframework], [0.2.3.1], [smartphones-userland@linuxtogo.org], [libfsoframework])
 AC_CONFIG_SRCDIR([Makefile.am])
 AC_CONFIG_HEADERS(config.h)
 AM_INIT_AUTOMAKE([dist-bzip2])
@@ -18,32 +18,18 @@ AC_SUBST(LDFLAGS)
 #
 PKG_PROG_PKG_CONFIG
 
-VALA_REQUIRED=0.7.6
+VALA_REQUIRED=0.7.8
 DBUS_REQUIRED=1.2.1
 DBUS_GLIB_REQUIRED=0.76
 GLIB_REQUIRED=2.18.0
 ALSA_REQUIRED=0.20
-FSOBASICS_REQUIRED=0.8.3
+FSOBASICS_REQUIRED=0.8.9.9
 
 # vala
 AC_PATH_PROG(VALAC, valac, valac)
 AC_SUBST(VALAC)
 PKG_CHECK_MODULES(VALA,
   vala-1.0 >= $VALA_REQUIRED)
-
-#
-# vala vapi files
-#
-VALA_VAPIDIR=`$PKG_CONFIG --variable=vapidir vala-1.0`
-AC_SUBST(VALA_VAPIDIR)
-
-AC_MSG_NOTICE([checking for misc-vapi...])
-if ! test -f "$VALA_VAPIDIR/linux.vapi"; then
-  AC_MSG_ERROR([linux.vapi not found. Your Vala installation may be too old.])
-fi
-if ! test -f "$VALA_VAPIDIR/alsa.vapi"; then
-  AC_MSG_ERROR([alsa.vapi not found. Your Vala installation may be too old.])
-fi
 
 # glib and friends
 PKG_CHECK_MODULES(GLIB,

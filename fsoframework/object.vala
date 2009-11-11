@@ -23,7 +23,7 @@
 public abstract class FsoFramework.AbstractObject : GLib.Object
 {
     protected FsoFramework.SmartKeyFile config;
-    protected FsoFramework.Logger logger;
+    public FsoFramework.Logger logger;
     public string classname;
 
     construct
@@ -33,7 +33,7 @@ public abstract class FsoFramework.AbstractObject : GLib.Object
         logger = FsoFramework.createLogger( FsoFramework.Utility.programName(), classname );
         logger.setReprDelegate( repr );
 #if DEBUG
-        message( "FsoFramework.AbstractObject: created logger for domain '%s'", classname );
+        debug( @"FsoFramework.AbstractObject: created logger for domain $classname" );
 #endif
     }
 

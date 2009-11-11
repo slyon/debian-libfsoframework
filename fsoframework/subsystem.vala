@@ -20,18 +20,47 @@
 using GLib;
 
 /**
- * Subsystem
+ * Subsystem Interface
+ *
+ * A subsystem hosts a number of plugins that can expose service objects
+ * via an IPC mechanism such as DBus.
  */
 public interface FsoFramework.Subsystem : Object
 {
+    /**
+     * Register plugins for this subsystem.
+     * @return the number of registered plugins.
+     **/
     public abstract uint registerPlugins();
+    /**
+     * Load registered plugins for this subsystem.
+     * @return the number of loaded plugins.
+     * Plugins are loaded in the order they appear in the register,
+     * which in turn is the order they are defined in the configuration
+     * file. You can use this to express dependencies.
+     **/
     public abstract uint loadPlugins();
+    /**
+     * @return the name of this subsystem.
+     **/
     public abstract string name();
+    /**
+     * @return plugin information.
+     **/
     public abstract List<FsoFramework.PluginInfo?> pluginsInfo();
-
+    /**
+     * Claim a service name with the IPC mechanism.
+     * @return true, if name could be claimed. false, otherwise.
+     **/
     public abstract bool registerServiceName( string servicename );
+    /**
+     * Export an object via the IPC mechanims.
+     * @return true, if object has been exported. false, otherwise.
+     **/
     public abstract bool registerServiceObject( string servicename, string objectname, Object obj );
-
+    /**
+     * Shutdown the subsystem. This will call shutdown on all plugins.
+     **/
     public abstract void shutdown();
 }
 
@@ -57,12 +86,12 @@ public abstract class FsoFramework.AbstractSubsystem : FsoFramework.Subsystem, O
 
         if ( !FsoFramework.theMasterKeyFile().hasSection( _name ) )
         {
-            logger.warning( "No section for %s in configuration file. Not looking for plugins.".printf( _name ) );
+            logger.warning( @"No section for $_name in configuration file. Not looking for plugins." );
             return 0;
         }
         if ( FsoFramework.theMasterKeyFile().boolValue( _name, "disabled", false ) )
         {
-            logger.info( "Subsystem %s has been disabled in configuration file. Not looking for plugins.".printf( _name ) );
+            logger.info( @"Subsystem $_name has been disabled in configuration file. Not looking for plugins." );
             return 0;
         }
 
@@ -71,7 +100,7 @@ public abstract class FsoFramework.AbstractSubsystem : FsoFramework.Subsystem, O
         var defaultpath = "%s/lib/cornucopia/modules".printf( FsoFramework.Utility.prefixForExecutable() );
         var pluginpath = FsoFramework.theMasterKeyFile().stringValue( "cornucopia", "plugin_path", defaultpath );
 
-        logger.debug( "pluginpath is %s".printf( pluginpath ) );
+        assert( logger.debug( @"Pluginpath is $pluginpath" ) );
 
         foreach ( var name in names )
         {
@@ -85,7 +114,7 @@ public abstract class FsoFramework.AbstractSubsystem : FsoFramework.Subsystem, O
             _plugins.append( plugin );
         }
 
-        logger.debug( "registered %u plugins".printf( _plugins.length() ) );
+        assert( logger.debug( @"Registered $(_plugins.length()) plugins" ) );
         return _plugins.length();
     }
 
@@ -102,7 +131,7 @@ public abstract class FsoFramework.AbstractSubsystem : FsoFramework.Subsystem, O
             }
             catch ( FsoFramework.PluginError e )
             {
-                logger.warning( "could not load plugin: %s".printf( e.message ) );
+                logger.warning( @"Could not load plugin: $(e.message)" );
             }
         }
         return counter;
@@ -197,22 +226,29 @@ public class FsoFramework.DBusSubsystem : FsoFramework.AbstractSubsystem
         var connection = _dbusconnections.lookup( servicename );
         if ( connection != null )
         {
-            logger.debug( "connection for '%s' found; ok.".printf( servicename ) );
+            assert( logger.debug( @"Connection for $servicename found; ok." ) );
             return true;
         }
 
-        logger.debug( "connection for '%s' not present yet; creating.".printf( servicename ) );
+        assert( logger.debug( @"Connection for $servicename not present yet; creating." ) );
 
         // get bus connection
         if ( _dbusconn == null )
         {
-            _dbusconn = DBus.Bus.get( DBus.BusType.SYSTEM );
-            _dbusobj = _dbusconn.get_object( DBus.DBUS_SERVICE_DBUS, DBus.DBUS_PATH_DBUS, DBus.DBUS_INTERFACE_DBUS );
+            try
+            {
+                _dbusconn = DBus.Bus.get( DBus.BusType.SYSTEM );
+                _dbusobj = _dbusconn.get_object( DBus.DBUS_SERVICE_DBUS, DBus.DBUS_PATH_DBUS, DBus.DBUS_INTERFACE_DBUS );
+            }
+            catch ( DBus.Error e )
+            {
+                logger.critical( @"Could not get handle for DBus service object at system bus: $(e.message)" );
+                return false;
+            }
         }
-        assert ( _dbusconn != null );
-        assert ( _dbusobj != null );
+        //uint res = _dbusobj.request_name( servicename, (uint) 0 );
+        uint res = _dbusobj.RequestName( servicename, (uint) 0 );
 
-        uint res = _dbusobj.request_name( servicename, (uint) 0 );
         if ( res == DBus.RequestNameReply.PRIMARY_OWNER )
         {
             _dbusconnections.insert( servicename, _dbusconn );
@@ -220,7 +256,7 @@ public class FsoFramework.DBusSubsystem : FsoFramework.AbstractSubsystem
         }
         else
         {
-            logger.warning( "can't request request dbus service name '%s'; service already running or not allowed in dbus configuration.".printf( servicename ) );
+            logger.critical( @"Can't acquire service name $servicename; service already running or not allowed in dbus configuration." );
             return false;
         }
     }
@@ -228,7 +264,11 @@ public class FsoFramework.DBusSubsystem : FsoFramework.AbstractSubsystem
     public override bool registerServiceObject( string servicename, string objectname, Object obj )
     {
         var conn = _dbusconnections.lookup( servicename );
-        assert ( conn != null );
+        if ( conn == null )
+        {
+            logger.warning( @"Can't register service object $objectname; service name $servicename could not be acquired." );
+            return false;
+        }
 
         // clean objectname
         var cleanedname = objectname.replace( "-", "_" ).replace( ":", "_" );
