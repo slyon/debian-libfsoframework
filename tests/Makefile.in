@@ -211,7 +211,6 @@ STRIP = @STRIP@
 VALAC = @VALAC@
 VALA_CFLAGS = @VALA_CFLAGS@
 VALA_LIBS = @VALA_LIBS@
-VALA_VAPIDIR = @VALA_VAPIDIR@
 VERSION = @VERSION@
 abs_builddir = @abs_builddir@
 abs_srcdir = @abs_srcdir@
@@ -269,7 +268,9 @@ GTESTER = gtester
 GTESTER_REPORT = gtester-report
 
 # initialize variables for unconditional += appending
-EXTRA_DIST = $(testcommon_VALASOURCES) $(testplugin_VALASOURCES) \
+EXTRA_DIST = $(testcommon_VALASOURCES) $(plugin_la_VALASOURCES) \
+	$(plugina_la_VALASOURCES) $(pluginb_la_VALASOURCES) \
+	$(pluginc_la_VALASOURCES) $(testplugin_VALASOURCES) \
 	$(testsubsystem_VALASOURCES) $(testobject_VALASOURCES) \
 	$(testasyncworker_VALASOURCES) \
 	$(testkobjectnotifier_VALASOURCES) \

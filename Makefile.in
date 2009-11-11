@@ -153,7 +153,6 @@ STRIP = @STRIP@
 VALAC = @VALAC@
 VALA_CFLAGS = @VALA_CFLAGS@
 VALA_LIBS = @VALA_LIBS@
-VALA_VAPIDIR = @VALA_VAPIDIR@
 VERSION = @VERSION@
 abs_builddir = @abs_builddir@
 abs_srcdir = @abs_srcdir@

@@ -157,7 +157,6 @@ STRIP = @STRIP@
 VALAC = @VALAC@
 VALA_CFLAGS = @VALA_CFLAGS@
 VALA_LIBS = @VALA_LIBS@
-VALA_VAPIDIR = @VALA_VAPIDIR@
 VERSION = @VERSION@
 abs_builddir = @abs_builddir@
 abs_srcdir = @abs_srcdir@
@@ -659,7 +658,6 @@ fsoframework-1.0.vapi fsoframework.vala.stamp: $(libfsoframework_la_VALASOURCES)
 	$(VALAC) -C --basedir $(top_srcdir) \
 	            --vapidir ../vapi \
 	            --pkg posix \
-	            --pkg posixextra \
 	            --pkg linux \
 	            --pkg glib-2.0 \
 	            --pkg gmodule-2.0 \
