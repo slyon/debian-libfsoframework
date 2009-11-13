@@ -7,8 +7,8 @@ Build-Depends: debhelper (>= 7), cdbs, pkg-config, valac (>= 0.7.8), libvala-dev
 Standards-Version: 3.8.3
 Section: libs
 Homepage: http://freesmartphone.org/
-Vcs-Git: git://git.debian.org/git/pkg-fso/fso-misc-vapi.git
-Vcs-Browser: http://git.debian.org/?p=pkg-fso/fso-misc-vapi.git;a=summary
+Vcs-Git: git://git.debian.org/git/pkg-fso/libfsoframework.git
+Vcs-Browser: http://git.debian.org/?p=pkg-fso/libfsoframework.git;a=summary
 
 Package: libfsoframework-dev
 Section: libdevel
