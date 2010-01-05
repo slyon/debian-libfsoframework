@@ -3,7 +3,7 @@ Priority: extra
 Maintainer: Debian FreeSmartphone.Org Team <pkg-fso-maint@lists.alioth.debian.org>
 DM-Upload-Allowed: yes
 Uploaders: Heiko Stuebner <heiko@sntech.de>
-Build-Depends: debhelper (>= 7), cdbs, pkg-config, valac (>= 0.7.8), libvala-dev, libglib2.0-dev, libdbus-1-dev, libdbus-glib-1-dev, libfsobasics-dev (>= 0.8.9.9), fso-misc-vapi (>= 0.5.0), libasound2-dev
+Build-Depends: debhelper (>= 7), cdbs, pkg-config, valac (>= 0.7.9), libvala-dev (>= 0.7.9), libglib2.0-dev, libdbus-1-dev, libdbus-glib-1-dev, libfsobasics-dev (>= 0.9.0+git20091225), libasound2-dev
 Standards-Version: 3.8.3
 Section: libs
 Homepage: http://freesmartphone.org/
@@ -13,7 +13,7 @@ Vcs-Browser: http://git.debian.org/?p=pkg-fso/libfsoframework.git;a=summary
 Package: libfsoframework-dev
 Section: libdevel
 Architecture: any
-Depends: libfsoframework0 (= ${binary:Version}), ${misc:Depends}, libdbus-1-dev, libdbus-glib-1-dev, fso-misc-vapi (>= 0.5.0), libasound2-dev, libfsobasics-dev (>= 0.8.9.9)
+Depends: libfsoframework0 (= ${binary:Version}), ${misc:Depends}, libdbus-1-dev, libdbus-glib-1-dev, libasound2-dev, libfsobasics-dev (>= 0.9.0+git20091225)
 Description: Development files for libfsoframework
  This library contains utility functions for
  freesmartphone.org API implementors.
