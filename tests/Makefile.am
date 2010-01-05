@@ -166,6 +166,18 @@ testkobjectnotifier_LDADD = $(progs_ldadd)
 EXTRA_DIST += $(testkobjectnotifier_VALASOURCES)
 
 #
+# inotifier test
+#
+TEST_PROGS += testinotifier
+testinotifier_VALASOURCES = testinotifier.vala
+testinotifier_SOURCES = testinotifier.c
+$(testinotifier_SOURCES): $(testinotifier_VALASOURCES)
+	$(VALAC) $(VALAC_ARGS) $^
+	touch $@
+testinotifier_LDADD = $(progs_ldadd)
+EXTRA_DIST += $(testinotifier_VALASOURCES)
+
+#
 # soundsystem test
 #
 TEST_PROGS += testsoundsystem
@@ -176,6 +188,30 @@ $(testsoundsystem_SOURCES): $(testsoundsystem_VALASOURCES)
 	touch $@
 testsoundsystem_LDADD = $(progs_ldadd)
 EXTRA_DIST += $(testsoundsystem_VALASOURCES)
+
+#
+# process test
+#
+TEST_PROGS += testprocess
+testprocess_VALASOURCES = testprocess.vala
+testprocess_SOURCES = testprocess.c
+$(testprocess_SOURCES): $(testprocess_VALASOURCES)
+	$(VALAC) $(VALAC_ARGS) $^
+	touch $@
+testprocess_LDADD = $(progs_ldadd)
+EXTRA_DIST += $(testprocess_VALASOURCES)
+
+#
+# overlay test
+#
+TEST_PROGS += testoverlay
+testoverlay_VALASOURCES = testoverlay.vala
+testoverlay_SOURCES = testoverlay.c
+$(testoverlay_SOURCES): $(testoverlay_VALASOURCES)
+	$(VALAC) $(VALAC_ARGS) $^
+	touch $@
+testoverlay_LDADD = $(progs_ldadd)
+EXTRA_DIST += $(testoverlay_VALASOURCES)
 
 CLEANFILES = \
     $(TEST_PROGS) \
