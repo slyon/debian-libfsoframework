@@ -20,11 +20,30 @@
 using GLib;
 using FsoFramework;
 
+MainLoop loop;
+
+public void myCallback( Linux.InotifyMaskFlags flags, uint32 cookie, string? name )
+{
+    debug( "got callback %d, %d, %s", (int)flags, (int)cookie, name );
+    loop.quit();
+}
+
 //===========================================================================
-void test_common_masterkeyfile()
+void test_inotifier_add()
 //===========================================================================
 {
-    var mkf = SmartKeyFile.defaultKeyFile();
+    INotifier.add( "/tmp/foo", Linux.InotifyMaskFlags.MODIFY, myCallback );
+    loop = new MainLoop();
+    loop.run();
+}
+
+//===========================================================================
+void test_inotifier_remove()
+//===========================================================================
+{
+    INotifier.remove( 123456 ); // not existing
+    var handle = INotifier.add( "/tmp/foo", Linux.InotifyMaskFlags.CREATE, myCallback );
+    INotifier.remove( handle );
 }
 
 //===========================================================================
@@ -33,7 +52,8 @@ void main( string[] args )
 {
     Test.init( ref args );
 
-    Test.add_func( "/Common/masterKeyFile", test_common_masterkeyfile );
+    Test.add_func( "/INotifier/Add", test_inotifier_add );
+    Test.add_func( "/INotifier/Remove", test_inotifier_remove );
 
     Test.run();
 }

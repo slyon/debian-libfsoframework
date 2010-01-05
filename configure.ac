@@ -1,7 +1,8 @@
-AC_INIT([libfsoframework], [0.2.3.1], [smartphones-userland@linuxtogo.org], [libfsoframework])
+AC_INIT([libfsoframework], [0.2.5], [smartphones-userland@linuxtogo.org], [libfsoframework])
 AC_CONFIG_SRCDIR([Makefile.am])
 AC_CONFIG_HEADERS(config.h)
 AM_INIT_AUTOMAKE([dist-bzip2])
+m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
 AC_PROG_CC
 AM_PROG_CC_C_O
@@ -13,17 +14,15 @@ AC_SUBST(CFLAGS)
 AC_SUBST(CPPFLAGS)
 AC_SUBST(LDFLAGS)
 
-#
 # pkg-config requirements
-#
 PKG_PROG_PKG_CONFIG
 
-VALA_REQUIRED=0.7.8
+VALA_REQUIRED=0.7.9
 DBUS_REQUIRED=1.2.1
 DBUS_GLIB_REQUIRED=0.76
 GLIB_REQUIRED=2.18.0
 ALSA_REQUIRED=0.20
-FSOBASICS_REQUIRED=0.8.9.9
+FSOBASICS_REQUIRED=0.9.1
 
 # vala
 AC_PATH_PROG(VALAC, valac, valac)
@@ -58,15 +57,26 @@ PKG_CHECK_MODULES(FSOBASICS,
 AC_SUBST(FSOBASICS_CFLAGS)
 AC_SUBST(FSOBASICS_LIBS)
 
-#
-# we need eventfd
-#
-AC_CHECK_HEADER(sys/eventfd.h, , [AC_MSG_ERROR(
-[Couldn't find sys/eventfd.h... your glibc is too old :(] )])
+# gather libdir
+if test "x$prefix" != "xNONE"; then
+  pkglibdir='${prefix}/lib/cornucopia'
+else
+  pkglibdir='/usr/local/lib/cornucopia'
+fi
+eval PACKAGE_LIBDIR="${pkglibdir}"
+AC_DEFINE_UNQUOTED([PACKAGE_LIBDIR], ["${PACKAGE_LIBDIR}"], [Module directory])
 
-#
+# check for debugging
+AC_ARG_ENABLE(debug,
+  [  --enable-debug            Enable debug build (default=disabled)],
+  debug="yes", debug="no")
+AM_CONDITIONAL( [WANT_DEBUG], [test x"$debug" = x"yes"])
+
+# git version
+GITV=`cat ../.git/refs/heads/master || echo "unknown"`
+AC_DEFINE_UNQUOTED([PACKAGE_GITV], ["${GITV}"], [git version])
+
 # output
-#
 AC_CONFIG_FILES([Makefile
   fsoframework-2.0.pc
   fsoframework/Makefile
@@ -74,21 +84,22 @@ AC_CONFIG_FILES([Makefile
 
 AC_OUTPUT
 
-#
-# Info
-#
+# info
 echo
 echo
 echo
 echo "------------------------------------------------------------------------"
-echo "$PACKAGE_NAME $PACKAGE_VERSION"
+echo "$PACKAGE_NAME $PACKAGE_VERSION-$GITV"
 echo "------------------------------------------------------------------------"
 echo
-echo "Configuration Options Summary:"
+echo "Configuration Options:"
 echo
-echo "  Compilation...............: make"
+echo "  modules directory.......: $pkglibdir"
 echo
-echo "  Installation..............: make install"
+echo "  debug build.............: $debug"
 echo
-echo "    prefix..................: $prefix"
+echo "  prefix..................: $prefix"
 echo
+echo "------------------------------------------------------------------------"
+echo
+echo "Now type 'make' to compile and 'make install' to install this package."

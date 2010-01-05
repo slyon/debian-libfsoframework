@@ -20,11 +20,23 @@
 using GLib;
 using FsoFramework;
 
+const string ORIGINAL_CONTENT = "Dieser Satz kein Verb!";
+const string OVERLAY_CONTENT = "This is the overlay content...";
+
 //===========================================================================
-void test_common_masterkeyfile()
+void test_overlay()
 //===========================================================================
 {
-    var mkf = SmartKeyFile.defaultKeyFile();
+    {
+        var overlay = new OverlayFile( "./overlayfile.txt", OVERLAY_CONTENT );
+        var original = FileHandling.read( "./overlayfile.txt.saved" );
+        assert( original == ORIGINAL_CONTENT );
+        var contents = FileHandling.read( "./overlayfile.txt" );
+        assert( contents == OVERLAY_CONTENT );
+    }
+    var contents = FileHandling.read( "./overlayfile.txt" );
+    assert( contents == ORIGINAL_CONTENT );
+    assert( !FileHandling.isPresent( "./overlayfile.txt.saved" ) );
 }
 
 //===========================================================================
@@ -33,7 +45,7 @@ void main( string[] args )
 {
     Test.init( ref args );
 
-    Test.add_func( "/Common/masterKeyFile", test_common_masterkeyfile );
+    Test.add_func( "/Overlay", test_overlay );
 
     Test.run();
 }
