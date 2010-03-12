@@ -1,5 +1,5 @@
-/**
- * Copyright (C) 2009 Michael 'Mickey' Lauer <mlauer@vanille-media.de>
+/*
+ * Copyright (C) 2009-2010 Michael 'Mickey' Lauer <mlauer@vanille-media.de>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -58,6 +58,11 @@ public interface FsoFramework.Subsystem : Object
      * @return true, if object has been exported. false, otherwise.
      **/
     public abstract bool registerServiceObject( string servicename, string objectname, Object obj );
+    /**
+     * Export an object via the IPC mechanims.
+     * @return true, if object has been exported. false, otherwise.
+     **/
+    public abstract bool registerServiceObjectWithPrefix( string servicename, string prefix, Object obj );
     /**
      * Shutdown the subsystem. This will call shutdown on all plugins.
      **/
@@ -132,6 +137,7 @@ public abstract class FsoFramework.AbstractSubsystem : FsoFramework.Subsystem, O
             catch ( FsoFramework.PluginError e )
             {
                 logger.warning( @"Could not load plugin: $(e.message)" );
+                //FIXME: Why do we not remove it here?
             }
         }
         return counter;
@@ -158,6 +164,11 @@ public abstract class FsoFramework.AbstractSubsystem : FsoFramework.Subsystem, O
     }
 
     public virtual bool registerServiceObject( string servicename, string objectname, Object obj )
+    {
+        return false;
+    }
+
+    public virtual bool registerServiceObjectWithPrefix( string servicename, string prefix, Object obj )
     {
         return false;
     }
@@ -205,11 +216,14 @@ public class FsoFramework.DBusSubsystem : FsoFramework.AbstractSubsystem
     HashTable<string, DBus.Connection> _dbusconnections;
     HashTable<string, Object> _dbusobjects;
 
+    HashTable<string, int> _counters;
+
     public DBusSubsystem( string name )
     {
         base( name );
         _dbusconnections = new HashTable<string, DBus.Connection>( str_hash, str_equal );
         _dbusobjects = new HashTable<string, Object>( str_hash, str_equal );
+        _counters = new HashTable<string, int>( str_hash, str_equal );
     }
 
     ~DBusSubsystem()
@@ -277,6 +291,19 @@ public class FsoFramework.DBusSubsystem : FsoFramework.AbstractSubsystem
         _dbusobjects.insert( cleanedname, obj );
         return true;
     }
+
+    public override bool registerServiceObjectWithPrefix( string servicename, string prefix, Object obj )
+    {
+        var hash = @"$servicename:$prefix";
+        int counter = _counters.lookup( hash );
+        var ok = registerServiceObject( servicename, @"$prefix/$counter", obj );
+        if ( ok )
+        {
+            _counters.insert( hash, ++counter );
+        }
+        return ok;
+    }
+
 
     public DBus.Connection dbusConnection()
     {
