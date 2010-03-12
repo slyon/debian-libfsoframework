@@ -4,7 +4,7 @@ Maintainer: Debian FreeSmartphone.Org Team <pkg-fso-maint@lists.alioth.debian.or
 DM-Upload-Allowed: yes
 Uploaders: Heiko Stuebner <heiko@sntech.de>
 Build-Depends: debhelper (>= 7), cdbs, pkg-config, valac (>= 0.7.9), libvala-dev (>= 0.7.9), libglib2.0-dev, libdbus-1-dev, libdbus-glib-1-dev, libfsobasics-dev (>= 0.9.0+git20091225), libasound2-dev
-Standards-Version: 3.8.3
+Standards-Version: 3.8.4
 Section: libs
 Homepage: http://freesmartphone.org/
 Vcs-Git: git://git.debian.org/git/pkg-fso/libfsoframework.git
