@@ -2,7 +2,7 @@ include $(top_srcdir)/Makefile.decl
 
 NULL =
 
-AM_CPPFLAGS = \
+AM_CFLAGS = \
 	-I$(top_srcdir) \
 	$(GLIB_CFLAGS) \
 	$(DBUS_CFLAGS) \
@@ -12,7 +12,7 @@ AM_CPPFLAGS = \
 
 VALAC_ARGS = \
 	--basedir $(top_srcdir) \
-	--vapidir ../vapi \
+	--vapidir $(top_srcdir)/vapi \
 	--pkg posix \
 	--pkg linux \
 	--pkg glib-2.0 \
@@ -27,7 +27,7 @@ VALAC_ARGS = \
 
 if WANT_DEBUG
 VALAC_ARGS += -g -D DEBUG
-AM_CFLAGS = -ggdb -O0
+AM_CFLAGS += -ggdb -O0
 endif
 
 BUILT_SOURCES = fsoframework.vala.stamp
@@ -38,18 +38,12 @@ lib_LTLIBRARIES = \
 
 libfsoframework_la_VALASOURCES = \
 	alsa.vala \
-	asyncworker.vala \
 	common.vala \
 	dbus.vala \
-	inotifier.vala \
 	interfaces.vala \
-	kobjectnotifier.vala \
 	object.vala \
-	overlay.vala \
 	plugin.vala \
-	process.vala \
 	subsystem.vala \
-	syncasync.vala \
 	$(NULL)
 
 libfsoframework_la_SOURCES = \
