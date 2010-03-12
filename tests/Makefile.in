@@ -108,34 +108,17 @@ pluginc_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
 	$(AM_CFLAGS) $(CFLAGS) $(pluginc_la_LDFLAGS) $(LDFLAGS) -o $@
 am__EXEEXT_1 = testcommon$(EXEEXT) testplugin$(EXEEXT) \
 	testsubsystem$(EXEEXT) testobject$(EXEEXT) \
-	testasyncworker$(EXEEXT) testkobjectnotifier$(EXEEXT) \
-	testinotifier$(EXEEXT) testsoundsystem$(EXEEXT) \
-	testprocess$(EXEEXT) testoverlay$(EXEEXT)
+	testsoundsystem$(EXEEXT)
 PROGRAMS = $(noinst_PROGRAMS)
-am_testasyncworker_OBJECTS = testasyncworker.$(OBJEXT)
-testasyncworker_OBJECTS = $(am_testasyncworker_OBJECTS)
-testasyncworker_DEPENDENCIES = $(am__DEPENDENCIES_2)
 am_testcommon_OBJECTS = testcommon.$(OBJEXT)
 testcommon_OBJECTS = $(am_testcommon_OBJECTS)
 testcommon_DEPENDENCIES = $(am__DEPENDENCIES_2)
-am_testinotifier_OBJECTS = testinotifier.$(OBJEXT)
-testinotifier_OBJECTS = $(am_testinotifier_OBJECTS)
-testinotifier_DEPENDENCIES = $(am__DEPENDENCIES_2)
-am_testkobjectnotifier_OBJECTS = testkobjectnotifier.$(OBJEXT)
-testkobjectnotifier_OBJECTS = $(am_testkobjectnotifier_OBJECTS)
-testkobjectnotifier_DEPENDENCIES = $(am__DEPENDENCIES_2)
 am_testobject_OBJECTS = testobject.$(OBJEXT)
 testobject_OBJECTS = $(am_testobject_OBJECTS)
 testobject_DEPENDENCIES = $(am__DEPENDENCIES_2)
-am_testoverlay_OBJECTS = testoverlay.$(OBJEXT)
-testoverlay_OBJECTS = $(am_testoverlay_OBJECTS)
-testoverlay_DEPENDENCIES = $(am__DEPENDENCIES_2)
 am_testplugin_OBJECTS = testplugin.$(OBJEXT)
 testplugin_OBJECTS = $(am_testplugin_OBJECTS)
 testplugin_DEPENDENCIES = $(am__DEPENDENCIES_2)
-am_testprocess_OBJECTS = testprocess.$(OBJEXT)
-testprocess_OBJECTS = $(am_testprocess_OBJECTS)
-testprocess_DEPENDENCIES = $(am__DEPENDENCIES_2)
 am_testsoundsystem_OBJECTS = testsoundsystem.$(OBJEXT)
 testsoundsystem_OBJECTS = $(am_testsoundsystem_OBJECTS)
 testsoundsystem_DEPENDENCIES = $(am__DEPENDENCIES_2)
@@ -170,18 +153,14 @@ am__v_GEN_ = $(am__v_GEN_$(AM_DEFAULT_VERBOSITY))
 am__v_GEN_0 = @echo "  GEN   " $@;
 SOURCES = $(plugin_la_SOURCES) $(plugina_la_SOURCES) \
 	$(pluginb_la_SOURCES) $(pluginc_la_SOURCES) \
-	$(testasyncworker_SOURCES) $(testcommon_SOURCES) \
-	$(testinotifier_SOURCES) $(testkobjectnotifier_SOURCES) \
-	$(testobject_SOURCES) $(testoverlay_SOURCES) \
-	$(testplugin_SOURCES) $(testprocess_SOURCES) \
-	$(testsoundsystem_SOURCES) $(testsubsystem_SOURCES)
+	$(testcommon_SOURCES) $(testobject_SOURCES) \
+	$(testplugin_SOURCES) $(testsoundsystem_SOURCES) \
+	$(testsubsystem_SOURCES)
 DIST_SOURCES = $(plugin_la_SOURCES) $(plugina_la_SOURCES) \
 	$(pluginb_la_SOURCES) $(pluginc_la_SOURCES) \
-	$(testasyncworker_SOURCES) $(testcommon_SOURCES) \
-	$(testinotifier_SOURCES) $(testkobjectnotifier_SOURCES) \
-	$(testobject_SOURCES) $(testoverlay_SOURCES) \
-	$(testplugin_SOURCES) $(testprocess_SOURCES) \
-	$(testsoundsystem_SOURCES) $(testsubsystem_SOURCES)
+	$(testcommon_SOURCES) $(testobject_SOURCES) \
+	$(testplugin_SOURCES) $(testsoundsystem_SOURCES) \
+	$(testsubsystem_SOURCES)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -317,10 +296,7 @@ EXTRA_DIST = $(testcommon_VALASOURCES) $(plugin_la_VALASOURCES) \
 	$(plugina_la_VALASOURCES) $(pluginb_la_VALASOURCES) \
 	$(pluginc_la_VALASOURCES) $(testplugin_VALASOURCES) \
 	$(testsubsystem_VALASOURCES) $(testobject_VALASOURCES) \
-	$(testasyncworker_VALASOURCES) \
-	$(testkobjectnotifier_VALASOURCES) \
-	$(testinotifier_VALASOURCES) $(testsoundsystem_VALASOURCES) \
-	$(testprocess_VALASOURCES) $(testoverlay_VALASOURCES)
+	$(testsoundsystem_VALASOURCES)
 
 #
 # common test
@@ -339,33 +315,12 @@ EXTRA_DIST = $(testcommon_VALASOURCES) $(plugin_la_VALASOURCES) \
 #
 
 #
-# asyncworker test
-#
-
-#
-# kobjectnotifier test
-#
-
-#
-# inotifier test
-#
-
-#
 # soundsystem test
 #
-
-#
-# process test
-#
-
-#
-# overlay test
-#
 TEST_PROGS = testcommon testplugin testsubsystem testobject \
-	testasyncworker testkobjectnotifier testinotifier \
-	testsoundsystem testprocess testoverlay
+	testsoundsystem
 NULL = 
-AM_CPPFLAGS = \
+AM_CFLAGS = \
 	-I$(top_srcdir) \
 	-I../fsoframework \
 	$(GLIB_CFLAGS) \
@@ -450,24 +405,9 @@ testsubsystem_LDADD = $(progs_ldadd)
 testobject_VALASOURCES = testobject.vala
 testobject_SOURCES = testobject.c
 testobject_LDADD = $(progs_ldadd)
-testasyncworker_VALASOURCES = testasyncworker.vala
-testasyncworker_SOURCES = testasyncworker.c
-testasyncworker_LDADD = $(progs_ldadd)
-testkobjectnotifier_VALASOURCES = testkobjectnotifier.vala
-testkobjectnotifier_SOURCES = testkobjectnotifier.c
-testkobjectnotifier_LDADD = $(progs_ldadd)
-testinotifier_VALASOURCES = testinotifier.vala
-testinotifier_SOURCES = testinotifier.c
-testinotifier_LDADD = $(progs_ldadd)
 testsoundsystem_VALASOURCES = testsoundsystem.vala
 testsoundsystem_SOURCES = testsoundsystem.c
 testsoundsystem_LDADD = $(progs_ldadd)
-testprocess_VALASOURCES = testprocess.vala
-testprocess_SOURCES = testprocess.c
-testprocess_LDADD = $(progs_ldadd)
-testoverlay_VALASOURCES = testoverlay.vala
-testoverlay_SOURCES = testoverlay.c
-testoverlay_LDADD = $(progs_ldadd)
 CLEANFILES = \
     $(TEST_PROGS) \
     *.? \
@@ -654,30 +594,15 @@ clean-noinstPROGRAMS:
 	list=`for p in $$list; do echo "$$p"; done | sed 's/$(EXEEXT)$$//'`; \
 	echo " rm -f" $$list; \
 	rm -f $$list
-testasyncworker$(EXEEXT): $(testasyncworker_OBJECTS) $(testasyncworker_DEPENDENCIES) 
-	@rm -f testasyncworker$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(testasyncworker_OBJECTS) $(testasyncworker_LDADD) $(LIBS)
 testcommon$(EXEEXT): $(testcommon_OBJECTS) $(testcommon_DEPENDENCIES) 
 	@rm -f testcommon$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(testcommon_OBJECTS) $(testcommon_LDADD) $(LIBS)
-testinotifier$(EXEEXT): $(testinotifier_OBJECTS) $(testinotifier_DEPENDENCIES) 
-	@rm -f testinotifier$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(testinotifier_OBJECTS) $(testinotifier_LDADD) $(LIBS)
-testkobjectnotifier$(EXEEXT): $(testkobjectnotifier_OBJECTS) $(testkobjectnotifier_DEPENDENCIES) 
-	@rm -f testkobjectnotifier$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(testkobjectnotifier_OBJECTS) $(testkobjectnotifier_LDADD) $(LIBS)
 testobject$(EXEEXT): $(testobject_OBJECTS) $(testobject_DEPENDENCIES) 
 	@rm -f testobject$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(testobject_OBJECTS) $(testobject_LDADD) $(LIBS)
-testoverlay$(EXEEXT): $(testoverlay_OBJECTS) $(testoverlay_DEPENDENCIES) 
-	@rm -f testoverlay$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(testoverlay_OBJECTS) $(testoverlay_LDADD) $(LIBS)
 testplugin$(EXEEXT): $(testplugin_OBJECTS) $(testplugin_DEPENDENCIES) 
 	@rm -f testplugin$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(testplugin_OBJECTS) $(testplugin_LDADD) $(LIBS)
-testprocess$(EXEEXT): $(testprocess_OBJECTS) $(testprocess_DEPENDENCIES) 
-	@rm -f testprocess$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(testprocess_OBJECTS) $(testprocess_LDADD) $(LIBS)
 testsoundsystem$(EXEEXT): $(testsoundsystem_OBJECTS) $(testsoundsystem_DEPENDENCIES) 
 	@rm -f testsoundsystem$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(testsoundsystem_OBJECTS) $(testsoundsystem_LDADD) $(LIBS)
@@ -695,14 +620,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/plugina_la-plugina.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pluginb_la-pluginb.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pluginc_la-pluginc.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testasyncworker.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testcommon.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testinotifier.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testkobjectnotifier.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testobject.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testoverlay.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testplugin.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testprocess.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testsoundsystem.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testsubsystem.Po@am__quote@
 
@@ -1059,22 +979,7 @@ $(testsubsystem_SOURCES): $(testsubsystem_VALASOURCES)
 $(testobject_SOURCES): $(testobject_VALASOURCES)
 	$(VALAC) $(VALAC_ARGS) $^
 	touch $@
-$(testasyncworker_SOURCES): $(testasyncworker_VALASOURCES)
-	$(VALAC) $(VALAC_ARGS) $^
-	touch $@
-$(testkobjectnotifier_SOURCES): $(testkobjectnotifier_VALASOURCES)
-	$(VALAC) $(VALAC_ARGS) $^
-	touch $@
-$(testinotifier_SOURCES): $(testinotifier_VALASOURCES)
-	$(VALAC) $(VALAC_ARGS) $^
-	touch $@
 $(testsoundsystem_SOURCES): $(testsoundsystem_VALASOURCES)
-	$(VALAC) $(VALAC_ARGS) $^
-	touch $@
-$(testprocess_SOURCES): $(testprocess_VALASOURCES)
-	$(VALAC) $(VALAC_ARGS) $^
-	touch $@
-$(testoverlay_SOURCES): $(testoverlay_VALASOURCES)
 	$(VALAC) $(VALAC_ARGS) $^
 	touch $@
 
