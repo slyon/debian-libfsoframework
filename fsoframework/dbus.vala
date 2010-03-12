@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2009 Michael 'Mickey' Lauer <mlauer@vanille-media.de>
+ * Copyright (C) 2009-2010 Michael 'Mickey' Lauer <mlauer@vanille-media.de>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -76,7 +76,29 @@ namespace DBus
     }
 }
 
+// misc helper classes and functions
 
+namespace FsoFramework {
+
+public bool isValidDBusName( string busname )
+{
+    var parts = busname.split( "." );
+    if ( parts.length < 2 )
+    {
+        return false;
+    }
+    if ( busname.has_prefix( "." ) )
+    {
+        return false;
+    }
+    if ( busname.has_suffix( "." ) )
+    {
+        return false;
+    }
+    return true;
+}
+
+} /* namespace FsoFramework */
 
 public delegate void FsoFramework.DBusServiceEventFunc( string busname );
 
