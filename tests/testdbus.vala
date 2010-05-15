@@ -21,18 +21,23 @@ using GLib;
 using FsoFramework;
 
 //===========================================================================
-void test_sound_system()
+void test_dbus_masterkeyfile()
 //===========================================================================
 {
-    var sd = SoundDevice.create( "hw:0" );
-    var controls = sd.allMixerControls();
-    debug( "# of controls = %d", controls.length );
-    foreach ( var control in controls )
-    {
-        debug( "Control: %s", control.to_string() );
-    }
+    var mkf = SmartKeyFile.defaultKeyFile();
+}
 
-    sd.setAllMixerControls( controls );
+//===========================================================================
+void test_dbus_is_valid_dbus_name()
+//===========================================================================
+{
+    assert( isValidDBusName( "org.foo" ) );
+    assert( isValidDBusName( "org.foo.bar" ) );
+    assert( isValidDBusName( "org.foo.bar.baz" ) );
+    assert( ! isValidDBusName( "org" ) );
+    assert( ! isValidDBusName( "org." ) );
+    assert( ! isValidDBusName( "foo.org." ) );
+    assert( ! isValidDBusName( ".org.yo.kurt" ) );
 }
 
 //===========================================================================
@@ -41,7 +46,8 @@ void main( string[] args )
 {
     Test.init( ref args );
 
-    Test.add_func( "/SoundSystem/All", test_sound_system );
+    Test.add_func( "/Common/masterKeyFile", test_dbus_masterkeyfile );
+    Test.add_func( "/DBus/isValidDBusName", test_dbus_is_valid_dbus_name );
 
     Test.run();
 }
