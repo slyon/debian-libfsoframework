@@ -1,3 +1,9 @@
+libfsoframework (0.2.4+git20100501-1) unstable; urgency=low
+
+  * new upstream snapshot
+
+ -- Heiko Stuebner <heiko@sntech.de>  Sun, 16 May 2010 21:45:33 +0200
+
 libfsoframework (0.2.4+git20100222-1) unstable; urgency=low
 
   * new upstream snapshot
