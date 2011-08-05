@@ -1,5 +1,5 @@
-/**
- * Copyright (C) 2009-2010 Michael 'Mickey' Lauer <mlauer@vanille-media.de>
+/*
+ * Copyright (C) 2009-2011 Michael 'Mickey' Lauer <mlauer@vanille-media.de>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -18,24 +18,18 @@
  */
 
 /**
- * @class FsoFramework.BaseObject
+ * @enum FsoFramework.ResourceStatus
  **/
-public abstract class FsoFramework.AbstractObject : GLib.Object
+public enum FsoFramework.ResourceStatus
 {
-    protected FsoFramework.SmartKeyFile config;
-    public FsoFramework.Logger logger;
-    public string classname;
-
-    construct
-    {
-        classname = Type.from_instance( this ).name();
-        config = SmartKeyFile.defaultKeyFile();
-        logger = Logger.createFromKeyFile( config, "logging", classname );
-        logger.setReprDelegate( repr );
-#if DEBUG
-        debug( @"FsoFramework.AbstractObject: created logger for domain $classname" );
-#endif
-    }
-
-    public abstract string repr();
+    UNKNOWN,
+    ENABLING,
+    ENABLED,
+    SUSPENDING,
+    SUSPENDED,
+    RESUMING,
+    DISABLING,
+    DISABLED
 }
+
+// vim:ts=4:sw=4:expandtab

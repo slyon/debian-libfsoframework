@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2010 Michael 'Mickey' Lauer <mlauer@vanille-media.de>
+ * Copyright (C) 2009-2011 Michael 'Mickey' Lauer <mlauer@vanille-media.de>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -25,6 +25,20 @@ namespace FsoFramework
     public const string ServiceDBusPrefix = "org.freesmartphone";
     public const string ServicePathPrefix = "/org/freesmartphone";
     public const string ServiceFacePrefix = "org.freesmartphone";
+
+    namespace Context
+    {
+        public const string ServiceDBusName = FsoFramework.ServiceDBusPrefix + ".ocontextd";
+
+        public const string ServiceFacePrefix = FsoFramework.ServiceFacePrefix + ".Context";
+        public const string ServicePathPrefix = FsoFramework.ServicePathPrefix + "/Context";
+
+        public const string ManagerServiceFace = ServiceFacePrefix + ".Manager";
+        public const string ManagerServicePath = ServicePathPrefix + "/Manager";
+
+        public const string ClientServiceFace = ServiceFacePrefix + ".Client";
+        public const string ClientServicePath = ServicePathPrefix + "/Client";
+    }
 
     namespace Data
     {
@@ -114,15 +128,49 @@ namespace FsoFramework
         public const string ServicePathPrefix = FsoFramework.ServicePathPrefix + "/Network";
     }
 
-    namespace MusicPlayer
+    namespace Phone
     {
-        public const string ServiceDBusName = FsoFramework.ServiceDBusPrefix + ".omusicd";
+        public const string ServiceDBusName = FsoFramework.ServiceDBusPrefix + ".ophoned";
+        public const string ServiceFacePrefix = FsoFramework.ServiceFacePrefix + ".Phone";
+        public const string ServicePathPrefix = FsoFramework.ServicePathPrefix + "/Phone";
 
-        public const string ServiceFacePrefix = FsoFramework.ServiceFacePrefix + ".MusicPlayer";
-        public const string ServicePathPrefix = FsoFramework.ServicePathPrefix + "/MusicPlayer";
+        public const string ManagerServiceFace = ServiceFacePrefix + ".Manager";
+        public const string ManagerServicePath = ServicePathPrefix + "/Manager";
 
-        public const string PlaylistServiceFace = ServiceFacePrefix + ".Playlist";
-        public const string PlaylistServicePathPrefix = ServicePathPrefix + "/Playlists";
+        public const string ClientServiceFace = ServiceFacePrefix + ".Client";
+        public const string ClientServicePath = ServicePathPrefix + "/Client";
+    }
+
+    namespace Preferences
+    {
+        public const string ServiceDBusName = FsoFramework.ServiceDBusPrefix + ".opreferencesd";
+
+        public const string ServiceFacePrefix = FsoFramework.ServiceFacePrefix + ".Preferences";
+        public const string ServicePathPrefix = FsoFramework.ServicePathPrefix + "/Preferences";
+    }
+
+    namespace PIM
+    {
+        public const string ServiceDBusName = FsoFramework.ServiceDBusPrefix + ".opimd";
+
+        public const string ServiceFacePrefix = FsoFramework.ServiceFacePrefix + ".PIM";
+        public const string ServicePathPrefix = FsoFramework.ServicePathPrefix + "/PIM";
+
+        public const string MessagesServiceFace = ServiceFacePrefix + ".Messages";
+        public const string MessagesServicePath = ServicePathPrefix + "/Messages";
+
+        public const string ContactsServiceFace = ServiceFacePrefix + ".Contacts";
+        public const string ContactsServicePath = ServicePathPrefix + "/Contacts";
+        public const string ContactServiceFace = ServiceFacePrefix + ".Contact";
+
+        public const string CallsServiceFace = ServiceFacePrefix + ".Calls";
+        public const string CallsServicePath = ServicePathPrefix + "/Calls";
+
+        public const string TasksServiceFace = ServiceFacePrefix + ".Tasks";
+        public const string TasksServicePath = ServicePathPrefix + "/Tasks";
+
+        public const string NotesServiceFace = ServiceFacePrefix + ".Notes";
+        public const string NotesServicePath = ServicePathPrefix + "/Notes";
     }
 
     namespace Resource
@@ -142,6 +190,9 @@ namespace FsoFramework
 
         public const string AlarmServiceFace = ServiceFacePrefix + ".Alarm";
         public const string AlarmServicePath = ServicePathPrefix + "/Alarm";
+
+        public const string LocationServiceFace = ServiceFacePrefix + ".Location";
+        public const string LocationServicePath = ServicePathPrefix + "/Location";
     }
 
     namespace Usage
@@ -152,36 +203,22 @@ namespace FsoFramework
         public const string ServicePathPrefix = FsoFramework.ServicePathPrefix + "/Usage";
     }
 
-    namespace Preferences
+    namespace Audio
     {
-        public const string ServiceDBusName = FsoFramework.ServiceDBusPrefix + ".opreferencesd";
+        public const string ServiceDBusName = FsoFramework.ServiceDBusPrefix + ".oaudiod";
 
-	public const string ServiceFacePrefix = FsoFramework.ServiceFacePrefix + ".Preferences";
-	public const string ServicePathPrefix = FsoFramework.ServicePathPrefix + "/Preferences";
+        public const string ServiceFacePrefix = FsoFramework.ServiceFacePrefix + ".Audio";
+        public const string ServicePathPrefix = FsoFramework.ServicePathPrefix + "/Audio";
     }
 
-    namespace PIM
+    namespace Application
     {
-        public const string ServiceDBusName = FsoFramework.ServiceDBusPrefix + ".opimd";
+        public const string ServiceDBusName = FsoFramework.ServiceDBusPrefix + ".oappd";
 
-	public const string ServiceFacePrefix = FsoFramework.ServiceFacePrefix + ".PIM";
-	public const string ServicePathPrefix = FsoFramework.ServicePathPrefix + "/PIM";
-
-	public const string MessagesServiceFace = ServiceFacePrefix + ".Messages";
-	public const string MessagesServicePath = ServicePathPrefix + "/Messages";
-
-	public const string ContactsServiceFace = ServiceFacePrefix + ".Contacts";
-	public const string ContactsServicePath = ServicePathPrefix + "/Contacts";
-	public const string ContactServiceFace = ServiceFacePrefix + ".Contact";
-
-	public const string CallsServiceFace = ServiceFacePrefix + ".Calls";
-	public const string CallsServicePath = ServicePathPrefix + "/Calls";
-
-	public const string TasksServiceFace = ServiceFacePrefix + ".Tasks";
-	public const string TasksServicePath = ServicePathPrefix + "/Tasks";
-
-	public const string NotesServiceFace = ServiceFacePrefix + ".Notes";
-	public const string NotesServicePath = ServicePathPrefix + "/Notes";
+        public const string ServiceFacePrefix = FsoFramework.ServiceFacePrefix + ".Application";
+        public const string ServicePathPrefix = FsoFramework.ServicePathPrefix + "/Application";
     }
 
 }
+
+// vim:ts=4:sw=4:expandtab

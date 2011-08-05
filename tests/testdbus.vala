@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2009-2010 Michael 'Mickey' Lauer <mlauer@vanille-media.de>
+ * Copyright (C) 2009-2011 Michael 'Mickey' Lauer <mlauer@vanille-media.de>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -51,3 +51,5 @@ void main( string[] args )
 
     Test.run();
 }
+
+// vim:ts=4:sw=4:expandtab

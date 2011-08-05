@@ -1,4 +1,4 @@
-AC_INIT([libfsoframework], [0.8.1], [smartphones-userland@linuxtogo.org], [libfsoframework])
+AC_INIT([libfsoframework], [0.8.2], [smartphones-userland@linuxtogo.org], [libfsoframework])
 AC_CONFIG_SRCDIR([Makefile.am])
 AC_CONFIG_HEADERS(config.h)
 AM_INIT_AUTOMAKE([dist-bzip2])
@@ -16,36 +16,28 @@ AC_SUBST(LDFLAGS)
 
 # pkg-config requirements
 PKG_PROG_PKG_CONFIG
-VALA_REQUIRED=0.7.9.7
-DBUS_REQUIRED=1.2.1
-DBUS_GLIB_REQUIRED=0.76
-GLIB_REQUIRED=2.18.0
-FSOBASICS_REQUIRED=0.9.9
+VALA_REQUIRED=0.12.0
+GLIB_REQUIRED=2.26.0
+GEE_REQUIRED=0.5.0
+FSO_BASICS_REQUIRED=0.9.9
 
 # vala
 AC_PATH_PROG(VALAC, valac, valac)
 AC_SUBST(VALAC)
-PKG_CHECK_MODULES(VALA,
-  vala-1.0 >= $VALA_REQUIRED)
+m4_ifdef([AM_PROG_VALAC], [AM_PROG_VALAC([$VALA_REQUIRED])])
 
 # glib and friends
 PKG_CHECK_MODULES(GLIB,
   glib-2.0 >= $GLIB_REQUIRED
   gobject-2.0 >= $GLIB_REQUIRED
-  gio-2.0 >= $GLIB_REQUIRED)
+  gio-2.0 >= $GLIB_REQUIRED
+  gee-1.0 >= $GEE_REQUIRED)
 AC_SUBST(GLIB_CFLAGS)
 AC_SUBST(GLIB_LIBS)
 
-# dbus and dbus-glib
-PKG_CHECK_MODULES(DBUS,
-  dbus-1 >= $DBUS_REQUIRED
-  dbus-glib-1 >= $DBUS_GLIB_REQUIRED)
-AC_SUBST(DBUS_CFLAGS)
-AC_SUBST(DBUS_LIBS)
-
 # libfsobasics
 PKG_CHECK_MODULES(FSOBASICS,
-  fsobasics-2.0 >= $FSOBASICS_REQUIRED)
+  fsobasics-2.0 >= $FSO_BASICS_REQUIRED)
 AC_SUBST(FSOBASICS_CFLAGS)
 AC_SUBST(FSOBASICS_LIBS)
 
@@ -61,7 +53,8 @@ AC_DEFINE_UNQUOTED([PACKAGE_LIBDIR], ["${PACKAGE_LIBDIR}"], [Module directory])
 # check for debugging
 AC_ARG_ENABLE(debug,
   [  --enable-debug            Enable debug build (default=disabled)],
-  debug="yes", debug="no")
+  [debug=$enableval],
+  [debug="no"])
 AM_CONDITIONAL( [WANT_DEBUG], [test x"$debug" = x"yes"])
 
 # git version
