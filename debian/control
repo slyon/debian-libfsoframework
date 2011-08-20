@@ -22,7 +22,6 @@ Vcs-Git: git://git.debian.org/git/pkg-fso/libfsoframework.git
 Vcs-Browser: http://git.debian.org/?p=pkg-fso/libfsoframework.git;a=summary
 
 Package: libfsoframework0
-Section: libs
 Architecture: any
 Pre-Depends: ${misc:Pre-Depends}
 Depends: ${shlibs:Depends}, ${misc:Depends}
