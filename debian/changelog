@@ -13,6 +13,7 @@ libfsoframework (0.8.2+git20110805-1) unstable; urgency=low
   * add debian/watch
   * add multi-arch support
   * switch from cdbs to debhelper
+  * update copyright information and use DEP5 format
 
  -- Sebastian Reichel <sre@debian.org>  Sat, 20 Aug 2011 09:31:02 +0200
 
