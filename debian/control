@@ -48,7 +48,6 @@ Architecture: any
 Section: debug
 Pre-Depends: ${misc:Pre-Depends}
 Depends: ${misc:Depends}, libfsoframework0 (= ${binary:Version})
-Priority: extra
 Description: debugging symbols for use with libfsoframework
  This library contains utility functions for
  freesmartphone.org API implementors.
