@@ -1,5 +1,6 @@
 libfsoframework (0.8.2+git20110805-1) unstable; urgency=low
 
+  [ Rico Rommel ]
   * new upstream snapshot
   * fixed lintian warnings
   * bump standards to 3.9.2
@@ -7,7 +8,10 @@ libfsoframework (0.8.2+git20110805-1) unstable; urgency=low
   * remove .la from libfsoframework-dev (Closes: #633244)
   * add Rico Rommel <rico@bierrommel.de> to uploaders
 
- -- Rico Rommel <rico@bierrommel.de>  Fri, 05 Aug 2011 19:50:13 +0200
+  [ Sebastian Reichel ]
+  * add me to uploaders
+
+ -- Sebastian Reichel <sre@debian.org>  Sat, 20 Aug 2011 09:31:02 +0200
 
 libfsoframework (0.2.4+git20100501-1) unstable; urgency=low
 
