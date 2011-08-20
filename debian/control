@@ -21,16 +21,6 @@ Homepage: http://freesmartphone.org/
 Vcs-Git: git://git.debian.org/git/pkg-fso/libfsoframework.git
 Vcs-Browser: http://git.debian.org/?p=pkg-fso/libfsoframework.git;a=summary
 
-Package: libfsoframework-dev
-Section: libdevel
-Architecture: any
-Depends: libfsoframework0 (= ${binary:Version}), ${misc:Depends}, libdbus-1-dev, libdbus-glib-1-dev, libasound2-dev, libfsobasics-dev (>= 0.9.0+git20100509)
-Description: Development files for libfsoframework
- This library contains utility functions for
- freesmartphone.org API implementors.
- .
- Development files.
-
 Package: libfsoframework0
 Section: libs
 Architecture: any
@@ -43,6 +33,16 @@ Description: freesmartphone.org framework library
  .
  This package is part of the freesmartphone.org software stack
  and is targeted for smartphones.
+
+Package: libfsoframework-dev
+Section: libdevel
+Architecture: any
+Depends: libfsoframework0 (= ${binary:Version}), ${misc:Depends}, libdbus-1-dev, libdbus-glib-1-dev, libasound2-dev, libfsobasics-dev (>= 0.9.0+git20100509)
+Description: Development files for libfsoframework
+ This library contains utility functions for
+ freesmartphone.org API implementors.
+ .
+ Development files.
 
 Package: libfsoframework-dbg
 Architecture: any
