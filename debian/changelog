@@ -7,7 +7,7 @@ libfsoframework (0.8.2+git20110805-1) unstable; urgency=low
   * fixed cleanfiles
   * remove .la from libfsoframework-dev (Closes: #633244)
   * add Rico Rommel <rico@bierrommel.de> to uploaders
-  * update vala build-dependency (Closes: #633244)
+  * update vala build-dependency (Closes: #629753)
 
   [ Sebastian Reichel ]
   * add me to uploaders
