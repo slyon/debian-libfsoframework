@@ -36,7 +36,7 @@ Description: freesmartphone.org framework library
 Package: libfsoframework-dev
 Section: libdevel
 Architecture: any
-Depends: libfsoframework0 (= ${binary:Version}), ${misc:Depends}, libdbus-1-dev, libdbus-glib-1-dev, libasound2-dev, libfsobasics-dev (>= 0.9.0+git20100509)
+Depends: libfsoframework0 (= ${binary:Version}), ${misc:Depends}, libdbus-1-dev, libdbus-glib-1-dev, libasound2-dev, libfsobasics-dev (>= 0.9.99+git20110804)
 Description: Development files for libfsoframework
  This library contains utility functions for
  freesmartphone.org API implementors.
