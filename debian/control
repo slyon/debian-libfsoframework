@@ -34,7 +34,9 @@ Description: Development files for libfsoframework
 Package: libfsoframework0
 Section: libs
 Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
 Depends: ${shlibs:Depends}, ${misc:Depends}
+Multi-Arch: same
 Description: freesmartphone.org framework library
  This library contains utility functions for
  freesmartphone.org API implementors.
@@ -45,6 +47,7 @@ Description: freesmartphone.org framework library
 Package: libfsoframework-dbg
 Architecture: any
 Section: debug
+Pre-Depends: ${misc:Pre-Depends}
 Depends: ${misc:Depends}, libfsoframework0 (= ${binary:Version})
 Priority: extra
 Description: debugging symbols for use with libfsoframework
