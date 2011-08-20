@@ -14,8 +14,9 @@ libfsoframework (0.8.2+git20110805-1) unstable; urgency=low
   * add multi-arch support
   * switch from cdbs to debhelper
   * update copyright information and use DEP5 format
+  * add initial libfsoframework0.symbols
 
- -- Sebastian Reichel <sre@debian.org>  Sat, 20 Aug 2011 09:31:02 +0200
+ -- Sebastian Reichel <sre@debian.org>  Sat, 20 Aug 2011 10:03:10 +0200
 
 libfsoframework (0.2.4+git20100501-1) unstable; urgency=low
 
