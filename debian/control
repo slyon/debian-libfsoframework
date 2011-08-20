@@ -12,7 +12,7 @@ Build-Depends: cdbs,
                libfsobasics-dev (>= 0.9.99+git20110804),
                libgee-dev (>=0.5.0),
                libglib2.0-dev (>= 2.26.0),
-               libvala-0.12-dev (>= 0.8.1),
+               libvala-0.12-dev,
                pkg-config,
                quilt,
                valac-0.12
