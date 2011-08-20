@@ -1,12 +1,9 @@
 #!/usr/bin/make -f
+%:
+	dh $@ --with quilt --with autoreconf
 
-include /usr/share/cdbs/1/rules/debhelper.mk
-include /usr/share/cdbs/1/class/autotools.mk
-include /usr/share/cdbs/1/rules/patchsys-quilt.mk
-include /usr/share/cdbs/1/rules/autoreconf.mk
+override_dh_strip:
+	dh_strip --dbg-package=libfsoframework-dbg
 
-
-DEB_DESTDIR = $(CURDIR)/debian/tmp/
-
-clean::
-	rm -f tests/Makefile.in tests/Makefile
+override_dh_installdocs:
+	dh_installdocs --link-doc=libfsoframework0
