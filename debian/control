@@ -3,7 +3,19 @@ Priority: extra
 Maintainer: Debian FreeSmartphone.Org Team <pkg-fso-maint@lists.alioth.debian.org>
 DM-Upload-Allowed: yes
 Uploaders: Heiko Stuebner <heiko@sntech.de>, Rico Rommel <rico@bierrommel.de>
-Build-Depends: debhelper (>= 7), cdbs, pkg-config, valac-0.12, libvala-0.12-dev (>= 0.8.1), libglib2.0-dev (>= 2.26.0), libdbus-1-dev, libdbus-glib-1-dev, libfsobasics-dev (>= 0.9.99+git20110804), libasound2-dev, libgee-dev (>=0.5.0), dh-autoreconf, quilt
+Build-Depends: cdbs,
+               debhelper (>= 7),
+               dh-autoreconf,
+               libasound2-dev,
+               libdbus-1-dev,
+               libdbus-glib-1-dev,
+               libfsobasics-dev (>= 0.9.99+git20110804),
+               libgee-dev (>=0.5.0),
+               libglib2.0-dev (>= 2.26.0),
+               libvala-0.12-dev (>= 0.8.1),
+               pkg-config,
+               quilt,
+               valac-0.12
 Standards-Version: 3.9.2
 Section: libs
 Homepage: http://freesmartphone.org/
