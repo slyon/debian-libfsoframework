@@ -1,3 +1,11 @@
+libfsoframework (0.8.2+git20110805-2) unstable; urgency=low
+
+  * Add fix-module-dir.patch (Closes: #640657)
+    This patch changes the module search path from /usr/lib/cornucopia
+    to /usr/lib/$arch/cornucopia (multi-arch library path).
+
+ -- Sebastian Reichel <sre@debian.org>  Tue, 06 Sep 2011 14:25:43 +0200
+
 libfsoframework (0.8.2+git20110805-1) unstable; urgency=low
 
   [ Rico Rommel ]
