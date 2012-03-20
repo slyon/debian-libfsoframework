@@ -1,6 +1,5 @@
 Format: http://anonscm.debian.org/viewvc/dep/web/deps/dep5.mdwn?revision=174
-Name: libfsoframework
-Maintainer: Heiko Stuebner <heiko@sntech.de>
+Upstream-Name: libfsoframework
 Source: http://www.freesmartphone.org
 
 Files: *

@@ -1,3 +1,11 @@
+libfsoframework (0.8.2+git20110805-3) unstable; urgency=low
+
+  * update vala build depends to 0.14 (Closes: #663310)
+  * update standards to 3.9.3
+  * update copyright fields
+
+ -- Rico Rommel <rico@bierrommel.de>  Tue, 20 Mar 2012 18:33:32 +0100
+
 libfsoframework (0.8.2+git20110805-2) unstable; urgency=low
 
   * Add fix-module-dir.patch (Closes: #640657)
