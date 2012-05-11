@@ -1,3 +1,12 @@
+libfsoframework (0.10.1-1) unstable; urgency=low
+
+  * Imported Upstream version 0.10.1
+  * Drop fix-cleanfiles.patch; it's not needed anymore
+  * Build from vala source and not from precompiled c source
+  * Depend on libfsobasics 0.10.0
+
+ -- Simon Busch <morphis@gravedo.de>  Sat, 12 May 2012 00:16:20 +0200
+
 libfsoframework (0.8.2+git20110805-3) unstable; urgency=low
 
   * update vala build depends to 0.14 (Closes: #663310)
