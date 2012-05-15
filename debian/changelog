@@ -4,6 +4,7 @@ libfsoframework (0.10.1-1) unstable; urgency=low
   * Drop fix-cleanfiles.patch; it's not needed anymore
   * Build from vala source and not from precompiled c source
   * Depend on libfsobasics 0.10.0
+  * Update patch to fix framework module directory
 
  -- Simon Busch <morphis@gravedo.de>  Sat, 12 May 2012 00:16:20 +0200
 

@@ -4,15 +4,14 @@ Description: use libdir provided by --libdir
 Last-Update: 2011-09-06
 Author: Sebastian Reichel <sre@debian.org>
 Bug-Debian: http://bugs.debian.org/640657
-diff --git a/configure.ac b/configure.ac
-index 8615f44..d7fbf6d 100644
---- a/configure.ac
-+++ b/configure.ac
-@@ -41,12 +41,11 @@ PKG_CHECK_MODULES(FSOBASICS,
- AC_SUBST(FSOBASICS_CFLAGS)
- AC_SUBST(FSOBASICS_LIBS)
+Index: libfsoframework/configure.ac
+===================================================================
+--- libfsoframework.orig/configure.ac	2012-05-12 00:08:23.000000000 +0200
++++ libfsoframework/configure.ac	2012-05-15 11:12:39.364433414 +0200
+@@ -73,11 +73,10 @@
+ # gather libdir
+ #########################################################################################
  
--# gather libdir
 -if test "x$prefix" != "xNONE"; then
 -  pkglibdir='${prefix}/lib/cornucopia'
 -else
@@ -22,7 +21,6 @@ index 8615f44..d7fbf6d 100644
 +test "x$libdir" = xNONE && libdir=$prefix/lib
 +libdir=`eval echo $libdir`
 +pkglibdir=$libdir/cornucopia
-+
  eval PACKAGE_LIBDIR="${pkglibdir}"
  AC_DEFINE_UNQUOTED([PACKAGE_LIBDIR], ["${PACKAGE_LIBDIR}"], [Module directory])
  
