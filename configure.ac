@@ -1,7 +1,16 @@
 m4_define([fsoframework_released], [1])
-m4_define([fsoframework_base_version], [0.10.1])
+m4_define([fsoframework_base_version], [0.11.0])
 m4_define([fsoframework_maybe_gitrev], m4_if(fsoframework_released, [1], [], [m4_esyscmd([git show-ref --hash=5 HEAD | tr -d '\n\r'])]))
 m4_define([fsoframework_version], m4_if(fsoframework_released, [1], [fsoframework_base_version], [fsoframework_base_version-fsoframework_maybe_gitrev]))
+
+# If library source has changed since last release, increment revision
+# If public symbols have been added, removed or changed since last release,
+#  increment current and set revision to 0
+# If public symbols have been added since last release, increment age
+# If public symbols have been removed since last release, set age to 0
+m4_define([fsoframework_lt_current], [0])
+m4_define([fsoframework_lt_revision], [0])
+m4_define([fsoframework_lt_age], [0])
 
 AC_INIT([libfsoframework], fsoframework_version, [smartphones-userland@linuxtogo.org], [libfsoframework])
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
@@ -9,7 +18,7 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 AC_PREREQ([2.65])
 AC_CONFIG_SRCDIR([Makefile.am])
 AC_CONFIG_HEADERS(config.h)
-AM_INIT_AUTOMAKE([dist-bzip2 no-dist-gzip])
+AM_INIT_AUTOMAKE([dist-bzip2 no-dist-gzip tar-ustar])
 AM_MAINTAINER_MODE([enable])
 
 AC_PROG_CC
@@ -23,6 +32,13 @@ AC_SUBST(CFLAGS)
 AC_SUBST(CPPFLAGS)
 AC_SUBST(LDFLAGS)
 
+LT_CURRENT=fsoframework_lt_current
+LT_REVISION=fsoframework_lt_revision
+LT_AGE=fsoframework_lt_age
+AC_SUBST([LT_CURRENT])
+AC_SUBST([LT_REVISION])
+AC_SUBST([LT_AGE])
+
 #########################################################################################
 # Vala building options -- allows tarball builds without installing vala
 #########################################################################################
@@ -33,7 +49,7 @@ AC_ARG_ENABLE([vala], AS_HELP_STRING([--enable-vala],[Enable building from Vala 
               [enable_vala=$enableval], [enable_vala=no])
 
 # Force Vala for non-release builds
-m4_if(fsosystem_released, [1], [],
+m4_if(fsoframework_released, [1], [],
       [
         enable_vala=yes
         echo "Vala compiler required for non-release builds; requiring Vala..."
@@ -54,7 +70,7 @@ AM_CONDITIONAL([HAVE_VALA], [test "x$enable_vala" = "xyes"])
 
 GLIB_REQUIRED=2.26.0
 GEE_REQUIRED=0.5.0
-FSO_REQUIRED=0.10.0
+FSO_REQUIRED=0.11.0
 
 PKG_CHECK_MODULES(GLIB,
   glib-2.0 >= $GLIB_REQUIRED

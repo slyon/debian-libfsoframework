@@ -93,6 +93,10 @@ libfsoframework_la_OBJECTS = $(am_libfsoframework_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
+libfsoframework_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
+	$(AM_CFLAGS) $(CFLAGS) $(libfsoframework_la_LDFLAGS) \
+	$(LDFLAGS) -o $@
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -176,6 +180,9 @@ LIBTOOL = @LIBTOOL@
 LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
+LT_AGE = @LT_AGE@
+LT_CURRENT = @LT_CURRENT@
+LT_REVISION = @LT_REVISION@
 MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
 MANIFEST_TOOL = @MANIFEST_TOOL@
@@ -293,6 +300,11 @@ libfsoframework_la_LIBADD = \
 	$(FSOBASICS_LIBS) \
 	$(NULL)
 
+libfsoframework_la_LDFLAGS = \
+	$(AM_LDFLAGS) \
+	-version-info "$(LT_CURRENT)":"$(LT_REVISION)":"$(LT_AGE)" \
+	$(NULL)
+
 fsoframeworkincludedir = $(includedir)/fsoframework-2.0
 fsoframeworkinclude_HEADERS = fsoframework.h
 vapidir = $(datadir)/vala/vapi
@@ -379,7 +391,7 @@ clean-libLTLIBRARIES:
 	  rm -f "$${dir}/so_locations"; \
 	done
 libfsoframework.la: $(libfsoframework_la_OBJECTS) $(libfsoframework_la_DEPENDENCIES) $(EXTRA_libfsoframework_la_DEPENDENCIES) 
-	$(AM_V_CCLD)$(LINK) -rpath $(libdir) $(libfsoframework_la_OBJECTS) $(libfsoframework_la_LIBADD) $(LIBS)
+	$(AM_V_CCLD)$(libfsoframework_la_LINK) -rpath $(libdir) $(libfsoframework_la_OBJECTS) $(libfsoframework_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
