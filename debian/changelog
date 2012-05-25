@@ -1,12 +1,16 @@
 libfsoframework (0.11.0-1) unstable; urgency=low
 
+  [ Simon Busch ]
   * Imported Upstream version 0.11.0
   * Drop fix-cleanfiles.patch; it's not needed anymore
   * Build from vala source and not from precompiled c source
   * Depend on libfsobasics 0.11.0
   * Update patch to fix framework module directory
 
- -- Simon Busch <morphis@gravedo.de>  Thu, 24 May 2012 11:22:51 +0200
+  [ Sebastian Reichel ]
+  * Remove build dependency on libdbus and libdbus-glib
+
+ -- Sebastian Reichel <sre@debian.org>  Fri, 25 May 2012 19:14:16 +0200
 
 libfsoframework (0.8.2+git20110805-3) unstable; urgency=low
 
