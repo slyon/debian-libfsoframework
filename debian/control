@@ -8,8 +8,6 @@ Uploaders: Heiko Stuebner <heiko@sntech.de>,
 Build-Depends: debhelper (>= 9),
                dh-autoreconf,
                libasound2-dev,
-               libdbus-1-dev,
-               libdbus-glib-1-dev,
                libfsobasics-dev (>= 0.11.0),
                libgee-dev (>=0.5.0),
                libglib2.0-dev (>= 2.26.0),
@@ -41,10 +39,10 @@ Section: libdevel
 Architecture: any
 Depends: ${misc:Depends},
          libfsoframework0 (= ${binary:Version}),
-         libdbus-1-dev,
-         libdbus-glib-1-dev,
          libasound2-dev,
-         libfsobasics-dev (>= 0.11.0)
+         libfsobasics-dev (>= 0.11.0),
+         libgee-dev (>=0.5.0),
+         libglib2.0-dev (>= 2.26.0)
 Description: Development files for libfsoframework
  This library contains utility functions for
  freesmartphone.org API implementors.
