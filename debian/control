@@ -52,7 +52,6 @@ Description: Development files for libfsoframework
 Package: libfsoframework-dbg
 Architecture: any
 Section: debug
-Pre-Depends: ${misc:Pre-Depends}
 Depends: ${misc:Depends},
          libfsoframework0 (= ${binary:Version})
 Description: debugging symbols for use with libfsoframework
