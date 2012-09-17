@@ -2,20 +2,17 @@ include $(top_srcdir)/Makefile.decl
 
 NULL =
 
-AM_CPPFLAGS = \
+AM_CFLAGS = \
 	-I$(top_srcdir) \
 	$(GLIB_CFLAGS) \
-	$(FSOBASICS_CFLAGS) \
 	-D G_LOG_DOMAIN=\"fsoframework\" \
+	$(LIBNL_CFLAGS) \
+	-I$(top_srcdir)/fsobasics \
 	$(NULL)
 
 AM_VALAFLAGS = \
 	$(NULL)
 
-if WANT_DEBUG
-AM_VALAFLAGS += -g -D DEBUG
-AM_CPPFLAGS += -ggdb -O0
-endif
 
 lib_LTLIBRARIES = libfsoframework.la
 
@@ -30,6 +27,7 @@ libfsoframework_la_SOURCES = \
 libfsoframework_la_VALAFLAGS = \
 	--basedir $(top_srcdir) \
 	--vapidir $(top_srcdir)/vapi \
+	--vapidir $(top_srcdir)/fsobasics \
 	--pkg glib-2.0 \
 	--pkg gmodule-2.0 \
 	--pkg gio-2.0 \
@@ -38,11 +36,12 @@ libfsoframework_la_VALAFLAGS = \
 	--pkg config \
 	--header fsoframework.h \
 	--library fsoframework-2.0 \
+	$(DEBUG_VALAFLAGS) \
 	$(NULL)
 
 libfsoframework_la_LIBADD = \
 	$(GLIB_LIBS) \
-	$(FSOBASICS_LIBS) \
+	$(top_builddir)/fsobasics/libfsobasics.la \
 	$(NULL)
 libfsoframework_la_LDFLAGS = \
 	$(AM_LDFLAGS) \
@@ -62,6 +61,13 @@ BUILT_SOURCES = \
 	fsoframework.h \
 	fsoframework-2.0.vapi \
 	$(NULL)
+
+EXTRA_DIST += \
+	fsoframework-2.0.pc.in \
+	$(NULL)
+
+pkgconfigdir = $(libdir)/pkgconfig
+pkgconfig_DATA = fsoframework-2.0.pc
 
 CLEANFILES =
 MAINTAINERCLEANFILES = \
