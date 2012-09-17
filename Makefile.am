@@ -3,16 +3,20 @@ include $(top_srcdir)/Makefile.decl
 NULL =
 
 SUBDIRS = \
+  fsosystem \
+  fsobasics \
+  fsotransport \
+  gsm0710mux \
   fsoframework \
+  fsoresource \
+  fsotest \
   vapi \
+  tests \
   $(NULL)
-
-pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = fsoframework-2.0.pc
 
 EXTRA_DIST += \
   MAINTAINERS \
-  fsoframework-2.0.pc.in \
+  3rdparty/linux/gsmmux.h \
   $(NULL)
 
 MAINTAINERCLEANFILES = \
