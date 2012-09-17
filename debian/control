@@ -8,24 +8,34 @@ Uploaders: Heiko Stuebner <heiko@sntech.de>,
 Build-Depends: debhelper (>= 9),
                dh-autoreconf,
                libasound2-dev,
-               libfsobasics-dev (>= 0.11.0),
                libgee-dev (>=0.5.0),
                libglib2.0-dev (>= 2.26.0),
-               libvala-0.14-dev,
+               libvala-0.16-dev,
+               libfso-glib-dev (>= 2012.07.27.2),
+               libnl-3-dev (>= 3.2),
+               libnl-route-3-dev (>= 3.2),
+               libgsm0710-dev (>= 1.2),
                pkg-config,
                quilt,
-               valac-0.14
+               valac-0.16
 Standards-Version: 3.9.3
 Section: libs
 Homepage: http://freesmartphone.org/
 Vcs-Git: git://git.debian.org/git/pkg-fso/libfsoframework.git
 Vcs-Browser: http://git.debian.org/?p=pkg-fso/libfsoframework.git;a=summary
 
-Package: libfsoframework0
+Package: libfsoframework3
 Architecture: any
+Provides: libfsotransport3
+Conflicts: libfsotransport3
+Replaces: libfsotransport3
 Pre-Depends: ${misc:Pre-Depends}
 Depends: ${misc:Depends},
-         ${shlibs:Depends}
+         ${shlibs:Depends},
+         libfso-glib2,
+         libnl-route-3-200,
+         libnl-3-200,
+         libgsm0710-0
 Multi-Arch: same
 Description: freesmartphone.org framework library
  This library contains utility functions for
@@ -37,10 +47,24 @@ Description: freesmartphone.org framework library
 Package: libfsoframework-dev
 Section: libdevel
 Architecture: any
+Provides: libfsobasics-dev,
+          libfsoresource-dev,
+          libfsosystem-dev,
+          libfsotransport-dev,
+          libgsm0710mux-dev
+Conflicts: libfsobasics-dev,
+           libfsoresource-dev,
+           libfsosystem-dev,
+           libfsotransport-dev,
+           libgsm0710mux-dev
+Replaces: libfsobasics-dev,
+          libfsoresource-dev,
+          libfsosystem-dev,
+          libfsotransport-dev,
+          libgsm0710mux-dev
 Depends: ${misc:Depends},
-         libfsoframework0 (= ${binary:Version}),
+         libfsoframework3 (= ${binary:Version}),
          libasound2-dev,
-         libfsobasics-dev (>= 0.11.0),
          libgee-dev (>=0.5.0),
          libglib2.0-dev (>= 2.26.0)
 Description: Development files for libfsoframework
@@ -52,8 +76,23 @@ Description: Development files for libfsoframework
 Package: libfsoframework-dbg
 Architecture: any
 Section: debug
+Provides: libfsobasics-dbg,
+          libfsoresource-dbg,
+          libfsosystem-dbg,
+          libfsotransport-dbg,
+          libgsm0710mux-dbg
+Conflicts: libfsobasics-dbg,
+           libfsoresource-dbg,
+           libfsosystem-dbg,
+           libfsotransport-dbg,
+           libgsm0710mux-dbg
+Replaces: libfsobasics-dbg,
+          libfsoresource-dbg,
+          libfsosystem-dbg,
+          libfsotransport-dbg,
+          libgsm0710mux-dbg
 Depends: ${misc:Depends},
-         libfsoframework0 (= ${binary:Version})
+         libfsoframework3 (= ${binary:Version})
 Description: debugging symbols for use with libfsoframework
  This library contains utility functions for
  freesmartphone.org API implementors.

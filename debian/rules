@@ -6,8 +6,11 @@ override_dh_auto_configure:
 	find . -name *_vala.stamp | xargs rm -f
 	dh_auto_configure -- --enable-vala
 
+override_dh_auto_test:
+	echo skipping tests
+
 override_dh_strip:
 	dh_strip --dbg-package=libfsoframework-dbg
 
 override_dh_installdocs:
-	dh_installdocs --link-doc=libfsoframework0
+	dh_installdocs --link-doc=libfsoframework3
