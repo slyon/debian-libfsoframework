@@ -1,3 +1,9 @@
+libfsoframework (0.12.0-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Lukas Märdian <luk@slyon.de>  Fri, 01 Feb 2013 22:57:51 +0100
+
 libfsoframework (0.12.0~rc2-1) unstable; urgency=low
 
   * New upstream release
